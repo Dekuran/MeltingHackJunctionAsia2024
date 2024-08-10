@@ -61,9 +61,8 @@
 		FF46D1572C66D117007BEA21 /* Mommy */ = {
 			isa = PBXGroup;
 			children = (
+				FF46D1732C66F398007BEA21 /* Presenters */,
 				FF46D1702C66D680007BEA21 /* Interactors */,
-				FF46D16F2C66D64E007BEA21 /* Presenters */,
-				FF46D16D2C66D648007BEA21 /* VideoCapturePresenter.swift */,
 				FF46D1682C66D40F007BEA21 /* Views */,
 				FF46D1582C66D117007BEA21 /* MommyApp.swift */,
 				FF46D15A2C66D117007BEA21 /* ContentView.swift */,
@@ -91,19 +90,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		FF46D16F2C66D64E007BEA21 /* Presenters */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenters;
-			sourceTree = "<group>";
-		};
 		FF46D1702C66D680007BEA21 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
 				FF46D1712C66D694007BEA21 /* VideoCaptureInteractor.swift */,
 			);
 			path = Interactors;
+			sourceTree = "<group>";
+		};
+		FF46D1732C66F398007BEA21 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				FF46D16D2C66D648007BEA21 /* VideoCapturePresenter.swift */,
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -1,4 +1,5 @@
 import SwiftUI
+import Lottie
 
 protocol ScanViewDelegate {
     func passImage(image: UIImage)
@@ -76,7 +77,7 @@ struct ScanView: View {
     var cameraView: some View {
         ZStack {
             CapturePreview(captureCameraViewModel: viewModel)
-                .frame(width: UIScreen.screenWidth, height: UIScreen.screenWidth)
+                .frame(width: UIScreen.screenWidth - 32, height: UIScreen.screenWidth - 32)
             VStack(spacing: 16.0) {
                 Spacer()
                 captureButton
@@ -96,6 +97,36 @@ struct ScanView: View {
             Color(uiColor: .preimary)
             VStack {
                 Spacer()
+                TextView(didSentText: { searchText in
+                    screenType = .requesting // 먼저 requesting 상태로 전환
+                    
+                    Task {
+                        do {
+                            let responseString = try await CheckFoodAPIRequest.postText(with: searchText)
+                            
+                            // JSON 문자열을 개별 라인으로 나누고 각 라인을 디코딩
+                            let responseLines = responseString.components(separatedBy: "\n")
+                            var risks: [IngredientRisk] = []
+                            
+                            for line in responseLines {
+                                if let data = line.data(using: .utf8), !data.isEmpty {
+                                    let risk = try JSONDecoder().decode(IngredientRisk.self, from: data)
+                                    risks.append(risk)
+                                }
+                            }
+                            
+                            ingredientRisks = risks
+                            
+                            if !ingredientRisks.isEmpty {
+                                screenType = .result
+                            } else {
+                                print("Received empty response. Remaining in requesting state.")
+                            }
+                        } catch {
+                            print("Error: \(error)")
+                        }
+                    }
+                })
                 toggleButton
             }
         }
@@ -105,9 +136,8 @@ struct ScanView: View {
         ZStack {
             Color(uiColor: .preimary)
             
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                .foregroundColor(.white)
+            LottieView(animation: .named("Loading"))
+                .playing(loopMode: .loop)
         }
     }
     
@@ -148,8 +178,14 @@ struct ScanView: View {
             } label: {
                 ZStack {
                     Color(uiColor: .preimary)
+                    if screenType == .camera {
+                        RoundedRectangle(cornerRadius: 16.0)
+                            .foregroundColor(.init(uiColor: .secondary))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                    }
                     Text("Camera")
-                        .font(.system(size: 32, weight: .bold))
+                        .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.init(uiColor: .button))
                 }
             }
@@ -161,8 +197,14 @@ struct ScanView: View {
             } label: {
                 ZStack {
                     Color(uiColor: .preimary)
+                    if screenType == .text {
+                        RoundedRectangle(cornerRadius: 16.0)
+                            .foregroundColor(.init(uiColor: .secondary))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                    }
                     Text("Text")
-                        .font(.system(size: 32, weight: .bold))
+                        .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.init(uiColor: .button))
                 }
             }

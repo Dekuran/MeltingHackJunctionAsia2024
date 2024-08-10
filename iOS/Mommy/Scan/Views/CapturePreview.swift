@@ -10,7 +10,7 @@ struct CapturePreview: UIViewRepresentable {
     public func makeUIView(context: Context) -> some UIView {
         
         let cameraView = captureCameraViewModel.previewView
-        cameraView.frame = .init(x: 0, y: 0, width: UIScreen.screenWidth, height: UIScreen.screenWidth)
+        cameraView.frame = .init(x: 0, y: 0, width: UIScreen.screenWidth - 32, height: UIScreen.screenWidth - 32)
         captureCameraViewModel.launchCamera()
         
         return cameraView

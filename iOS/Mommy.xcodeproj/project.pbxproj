@@ -34,6 +34,10 @@
 		FF46D1882C674765007BEA21 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1872C67475D007BEA21 /* UIScreen+.swift */; };
 		FF46D18A2C674989007BEA21 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1892C674986007BEA21 /* UIColor+.swift */; };
 		FF46D18E2C674C84007BEA21 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D18D2C674C82007BEA21 /* HomeView.swift */; };
+		FF6EFC6C2C6813DB005F9B1B /* SpeechBubble.json in Resources */ = {isa = PBXBuildFile; fileRef = FF6EFC6B2C6813DB005F9B1B /* SpeechBubble.json */; };
+		FF6EFC702C6814C6005F9B1B /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EFC6F2C6814C6005F9B1B /* TextView.swift */; };
+		FF6EFC722C6814E8005F9B1B /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EFC712C6814E8005F9B1B /* SpeechRecognizer.swift */; };
+		FF6EFC742C681C96005F9B1B /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = FF6EFC732C681C96005F9B1B /* Loading.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +68,10 @@
 		FF46D1872C67475D007BEA21 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		FF46D1892C674986007BEA21 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		FF46D18D2C674C82007BEA21 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FF6EFC6B2C6813DB005F9B1B /* SpeechBubble.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SpeechBubble.json; sourceTree = "<group>"; };
+		FF6EFC6F2C6814C6005F9B1B /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		FF6EFC712C6814E8005F9B1B /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		FF6EFC732C681C96005F9B1B /* Loading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +204,7 @@
 		FF46D1682C66D40F007BEA21 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF6EFC6F2C6814C6005F9B1B /* TextView.swift */,
 				FF46D1842C6746BE007BEA21 /* CapturePreview.swift */,
 				FF46D1762C67105D007BEA21 /* ScanView.swift */,
 			);
@@ -213,6 +222,7 @@
 		FF46D17D2C6737BF007BEA21 /* Scan */ = {
 			isa = PBXGroup;
 			children = (
+				FF6EFC752C681CA0005F9B1B /* Components */,
 				FF46D17E2C6737D8007BEA21 /* Requests */,
 				FF46D1782C6732AD007BEA21 /* ViewModels */,
 				FF46D1682C66D40F007BEA21 /* Views */,
@@ -232,6 +242,7 @@
 		FF46D1862C67474E007BEA21 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				FF6EFC712C6814E8005F9B1B /* SpeechRecognizer.swift */,
 				FF46D1892C674986007BEA21 /* UIColor+.swift */,
 				FF46D1872C67475D007BEA21 /* UIScreen+.swift */,
 				20CF73CE2C677DFD00B3F470 /* ViewExtension.swift */,
@@ -254,6 +265,15 @@
 				FF46D18D2C674C82007BEA21 /* HomeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FF6EFC752C681CA0005F9B1B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FF6EFC6B2C6813DB005F9B1B /* SpeechBubble.json */,
+				FF6EFC732C681C96005F9B1B /* Loading.json */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,8 +343,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF46D1622C66D119007BEA21 /* Preview Assets.xcassets in Resources */,
+				FF6EFC6C2C6813DB005F9B1B /* SpeechBubble.json in Resources */,
 				20CF73C42C6762C600B3F470 /* BabyLottie.json in Resources */,
 				FF46D15F2C66D119007BEA21 /* Assets.xcassets in Resources */,
+				FF6EFC742C681C96005F9B1B /* Loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,9 +374,11 @@
 				20CF73AD2C67351D00B3F470 /* IngredientResultViewModel.swift in Sources */,
 				20CF73C82C6762C600B3F470 /* RootOnboardingView.swift in Sources */,
 				20CF73C72C6762C600B3F470 /* OnboardingWelcomeView.swift in Sources */,
+				FF6EFC722C6814E8005F9B1B /* SpeechRecognizer.swift in Sources */,
 				20CF73C62C6762C600B3F470 /* EnterInfoView.swift in Sources */,
 				FF46D15D2C66D117007BEA21 /* Item.swift in Sources */,
 				FF46D18E2C674C84007BEA21 /* HomeView.swift in Sources */,
+				FF6EFC702C6814C6005F9B1B /* TextView.swift in Sources */,
 				FF46D1592C66D117007BEA21 /* MommyApp.swift in Sources */,
 				FF46D18A2C674989007BEA21 /* UIColor+.swift in Sources */,
 			);
@@ -495,6 +519,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mommy/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please arrow to capture image to search item";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Please arrow to use mic to input by audio.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Please arrow to use mic to input by audio";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -528,6 +554,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mommy/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please arrow to capture image to search item";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Please arrow to use mic to input by audio.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Please arrow to use mic to input by audio";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

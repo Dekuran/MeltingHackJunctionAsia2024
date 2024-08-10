@@ -9,11 +9,11 @@ import SwiftUI
 
 struct EnterInfoView: View {
     @Environment(\.colorScheme) private var scheme
-    @State private var userName = ""
-    @State private var currentStage: String?
-    @State private var weekOfPregnancy = ""
-    @State private var dueDate = Date()
-    @State private var allergies = ""
+    @AppStorage("userName") private var userName = ""
+    @AppStorage("currentStage") private var currentStage: String?
+    @AppStorage("weekOfPregnancy") private var weekOfPregnancy = ""
+    @AppStorage("dueDate") private var dueDate = Date()
+    @AppStorage("allergies") private var allergies = ""
     @Binding var currentPage: Int
     
     // 모든 필드가 채워졌는지 확인하는 변수

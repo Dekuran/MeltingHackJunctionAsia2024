@@ -8,43 +8,81 @@ struct HomeView: View {
         ZStack {
             Color(uiColor: .preimary)
                 .ignoresSafeArea()
+
+            contentView
+
+            bottomButton
+        }
+        .onAppear {
+            viewModel.fetchEncouragementMessage()
+        }
+        .fullScreenCover(isPresented: $viewModel.isPresented, content: ScanView.init)
+    }
+    
+    var contentView: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 24.0)
+                .foregroundColor(Color(uiColor: .secondary))
+
+            profileView
+        }
+    }
+    
+    var profileView: some View {
+        VStack {
+            Spacer().frame(height: 4)
+            // Displaying the user's name
+            Text(viewModel.userGreeting)
+                .font(.system(size: 27))
+                .fontWeight(.heavy)
+                .foregroundColor(Color(uiColor: .button))
+                .padding(.bottom, 8)
+
+            // Displaying the weeks and days passed since the start
+            Text("\(viewModel.weeksSinceStart.weeks) weeks, \(viewModel.weeksSinceStart.days) days")
+                .font(.system(size: 27))
+                .fontWeight(.semibold)
+                .foregroundColor(Color(uiColor: .button))
+                .padding(.bottom, 2)
+
+            Text("Due Date in \(viewModel.weeksUntilDue.weeks) weeks")
+                .font(.system(size: 16))
+                .fontWeight(.semibold)
+                .foregroundColor(Color(uiColor: .button))
+                .padding(.bottom, 4)
+
+
+            Image("BabyImage")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 7)
             
-            VStack(spacing: 20) {
-                
-                // MARK: Circle Image Of baby
-                Image("BabyImage")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                    .shadow(radius: 7)
-                
-                // Displaying the user's name
-                Text(viewModel.userGreeting)
-                    .font(.title)
-                    .fontWeight(.bold)
+            messageView
+            
+            Spacer()
+        }
+    }
+    
+    var messageView: some View {
+        ZStack {
+            VStack {
+                Spacer().frame(height: 36.0)
+
+                RoundedRectangle(cornerRadius: 24.0)
                     .foregroundColor(.white)
+            }
+            
+            VStack {
+                vegetablebar
                 
-                // Displaying the weeks and days passed since the start
-                Text("It's been..")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                Text("\(viewModel.weeksSinceStart.weeks) weeks and \(viewModel.weeksSinceStart.days) days!")
-                    .font(.title2)
+                Text("Weeks Food Track")
+                    .font(.system(size: 24))
                     .fontWeight(.semibold)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(uiColor: .button))
                 
-                // Displaying the weeks and days until the due date
-                Text("Until the baby arrives..")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                Text("\(viewModel.weeksUntilDue.weeks) weeks and \(viewModel.weeksUntilDue.days) days left!")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                
-                // 로딩 중일 때 로딩 인디케이터 표시
                 if viewModel.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
@@ -52,41 +90,61 @@ struct HomeView: View {
                 } else {
                     // Displaying the encouragement and advice
                     Text(viewModel.encouragementMessage)
-                        .font(.headline)
-                        .foregroundColor(.white)
+                        .font(.system(size: 14))
+                        .foregroundColor(Color(uiColor: .button))
                         .padding()
                         .multilineTextAlignment(.center)
                 }
                 
-                Spacer()
+                Image("calendar")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 108)
                 
-                Button(
-                    action: {
-                        viewModel.isPresented.toggle()
-                    },
-                    label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 16.0)
-                                .frame(height: 44.0)
-                                .foregroundColor(.init(uiColor: .button))
-                            Text("Scan for Nutrients")
-                                .foregroundColor(.white)
-                                .fontWeight(.semibold)
-                        }
-                    }
-                )
-                .padding(.horizontal, 24)
+                Spacer()
             }
-            .padding()
         }
-        .onAppear {
-            viewModel.fetchEncouragementMessage()
+    }
+    
+    var vegetablebar: some View {
+        ZStack {
+            Image("vegetableBar")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 89)
+            
+            Text("\(viewModel.weeksSinceStart.weeks)")
+                .font(.system(size: 55))
+                .fontWeight(.heavy)
+                .foregroundColor(Color(uiColor: .button))
         }
-        .fullScreenCover(isPresented: $viewModel.isPresented, content: ScanView.init)
+    }
+    
+    var bottomButton: some View {
+        VStack {
+            Spacer()
+            
+            Button(
+                action: {
+                    viewModel.isPresented.toggle()
+                },
+                label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 16.0)
+                            .frame(height: 44.0)
+                            .foregroundColor(.init(uiColor: .button))
+                        Text("Scan for Nutrients")
+                            .foregroundColor(.white)
+                            .fontWeight(.semibold)
+                    }
+                }
+            )
+            .padding(.horizontal, 24)
+        }
     }
 }
 
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView()
+//}

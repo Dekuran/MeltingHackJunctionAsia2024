@@ -11,6 +11,12 @@
 		20CF73AB2C67351D00B3F470 /* IngredientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73A32C67351D00B3F470 /* IngredientModel.swift */; };
 		20CF73AC2C67351D00B3F470 /* IngredientResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73A52C67351D00B3F470 /* IngredientResultView.swift */; };
 		20CF73AD2C67351D00B3F470 /* IngredientResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73A72C67351D00B3F470 /* IngredientResultViewModel.swift */; };
+		20CF73C42C6762C600B3F470 /* BabyLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 20CF73BD2C6762C600B3F470 /* BabyLottie.json */; };
+		20CF73C52C6762C600B3F470 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73BE2C6762C600B3F470 /* DropDownView.swift */; };
+		20CF73C62C6762C600B3F470 /* EnterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73C02C6762C600B3F470 /* EnterInfoView.swift */; };
+		20CF73C72C6762C600B3F470 /* OnboardingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73C12C6762C600B3F470 /* OnboardingWelcomeView.swift */; };
+		20CF73C82C6762C600B3F470 /* RootOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73C22C6762C600B3F470 /* RootOnboardingView.swift */; };
+		20CF73CC2C67639600B3F470 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 20CF73CB2C67639600B3F470 /* Lottie */; };
 		FF46D1592C66D117007BEA21 /* MommyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1582C66D117007BEA21 /* MommyApp.swift */; };
 		FF46D15B2C66D117007BEA21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D15A2C66D117007BEA21 /* ContentView.swift */; };
 		FF46D15D2C66D117007BEA21 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D15C2C66D117007BEA21 /* Item.swift */; };
@@ -32,6 +38,11 @@
 		20CF73A32C67351D00B3F470 /* IngredientModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientModel.swift; sourceTree = "<group>"; };
 		20CF73A52C67351D00B3F470 /* IngredientResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientResultView.swift; sourceTree = "<group>"; };
 		20CF73A72C67351D00B3F470 /* IngredientResultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientResultViewModel.swift; sourceTree = "<group>"; };
+		20CF73BD2C6762C600B3F470 /* BabyLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BabyLottie.json; sourceTree = "<group>"; };
+		20CF73BE2C6762C600B3F470 /* DropDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		20CF73C02C6762C600B3F470 /* EnterInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterInfoView.swift; sourceTree = "<group>"; };
+		20CF73C12C6762C600B3F470 /* OnboardingWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeView.swift; sourceTree = "<group>"; };
+		20CF73C22C6762C600B3F470 /* RootOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootOnboardingView.swift; sourceTree = "<group>"; };
 		FF46D1552C66D117007BEA21 /* Mommy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mommy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46D1582C66D117007BEA21 /* MommyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MommyApp.swift; sourceTree = "<group>"; };
 		FF46D15A2C66D117007BEA21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20CF73CC2C67639600B3F470 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +107,34 @@
 			path = Results;
 			sourceTree = "<group>";
 		};
+		20CF73BF2C6762C600B3F470 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				20CF73BD2C6762C600B3F470 /* BabyLottie.json */,
+				20CF73BE2C6762C600B3F470 /* DropDownView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		20CF73C32C6762C600B3F470 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				20CF73C92C6762D100B3F470 /* View */,
+				20CF73BF2C6762C600B3F470 /* Components */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		20CF73C92C6762D100B3F470 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20CF73C02C6762C600B3F470 /* EnterInfoView.swift */,
+				20CF73C12C6762C600B3F470 /* OnboardingWelcomeView.swift */,
+				20CF73C22C6762C600B3F470 /* RootOnboardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FF46D14C2C66D117007BEA21 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +154,7 @@
 		FF46D1572C66D117007BEA21 /* Mommy */ = {
 			isa = PBXGroup;
 			children = (
+				20CF73C32C6762C600B3F470 /* Onboarding */,
 				FF46D18B2C674C62007BEA21 /* Home */,
 				FF46D1862C67474E007BEA21 /* Helper */,
 				FF46D1822C674047007BEA21 /* Router.swift */,
@@ -213,6 +254,9 @@
 			dependencies = (
 			);
 			name = Mommy;
+			packageProductDependencies = (
+				20CF73CB2C67639600B3F470 /* Lottie */,
+			);
 			productName = Mommy;
 			productReference = FF46D1552C66D117007BEA21 /* Mommy.app */;
 			productType = "com.apple.product-type.application";
@@ -241,6 +285,9 @@
 				Base,
 			);
 			mainGroup = FF46D14C2C66D117007BEA21;
+			packageReferences = (
+				20CF73CA2C67639600B3F470 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = FF46D1562C66D117007BEA21 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -256,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF46D1622C66D119007BEA21 /* Preview Assets.xcassets in Resources */,
+				20CF73C42C6762C600B3F470 /* BabyLottie.json in Resources */,
 				FF46D15F2C66D119007BEA21 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,12 +321,16 @@
 				FF46D17A2C6732BB007BEA21 /* CaptureCameraViewModel.swift in Sources */,
 				FF46D1852C6746BF007BEA21 /* CapturePreview.swift in Sources */,
 				FF46D1832C67404E007BEA21 /* Router.swift in Sources */,
+				20CF73C52C6762C600B3F470 /* DropDownView.swift in Sources */,
 				FF46D1772C671062007BEA21 /* ScanView.swift in Sources */,
 				FF46D15B2C66D117007BEA21 /* ContentView.swift in Sources */,
 				FF46D1802C673CC5007BEA21 /* APIRequestHelper.swift in Sources */,
 				FF46D1882C674765007BEA21 /* UIScreen+.swift in Sources */,
 				20CF73AA2C67351D00B3F470 /* IngredientDummyData.swift in Sources */,
 				20CF73AD2C67351D00B3F470 /* IngredientResultViewModel.swift in Sources */,
+				20CF73C82C6762C600B3F470 /* RootOnboardingView.swift in Sources */,
+				20CF73C72C6762C600B3F470 /* OnboardingWelcomeView.swift in Sources */,
+				20CF73C62C6762C600B3F470 /* EnterInfoView.swift in Sources */,
 				FF46D15D2C66D117007BEA21 /* Item.swift in Sources */,
 				FF46D18E2C674C84007BEA21 /* HomeView.swift in Sources */,
 				FF46D1592C66D117007BEA21 /* MommyApp.swift in Sources */,
@@ -416,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mommy/Preview Content\"";
-				DEVELOPMENT_TEAM = 679U29FZ6S;
+				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please arrow to capture image to search item";
@@ -447,7 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mommy/Preview Content\"";
-				DEVELOPMENT_TEAM = 679U29FZ6S;
+				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please arrow to capture image to search item";
@@ -492,6 +544,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		20CF73CA2C67639600B3F470 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20CF73CB2C67639600B3F470 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20CF73CA2C67639600B3F470 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FF46D14D2C66D117007BEA21 /* Project object */;
 }

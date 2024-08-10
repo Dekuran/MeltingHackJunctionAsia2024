@@ -12,10 +12,8 @@
 		FF46D15D2C66D117007BEA21 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D15C2C66D117007BEA21 /* Item.swift */; };
 		FF46D15F2C66D119007BEA21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46D15E2C66D119007BEA21 /* Assets.xcassets */; };
 		FF46D1622C66D119007BEA21 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46D1612C66D119007BEA21 /* Preview Assets.xcassets */; };
-		FF46D16A2C66D445007BEA21 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1692C66D43A007BEA21 /* ScanView.swift */; };
-		FF46D16C2C66D571007BEA21 /* CALayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D16B2C66D56E007BEA21 /* CALayerView.swift */; };
-		FF46D16E2C66D64A007BEA21 /* VideoCapturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D16D2C66D648007BEA21 /* VideoCapturePresenter.swift */; };
-		FF46D1722C66D697007BEA21 /* VideoCaptureInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1712C66D694007BEA21 /* VideoCaptureInteractor.swift */; };
+		FF46D1772C671062007BEA21 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1762C67105D007BEA21 /* ScanView.swift */; };
+		FF46D17A2C6732BB007BEA21 /* CaptureCameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1792C6732BA007BEA21 /* CaptureCameraViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +23,8 @@
 		FF46D15C2C66D117007BEA21 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FF46D15E2C66D119007BEA21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF46D1612C66D119007BEA21 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FF46D1692C66D43A007BEA21 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
-		FF46D16B2C66D56E007BEA21 /* CALayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerView.swift; sourceTree = "<group>"; };
-		FF46D16D2C66D648007BEA21 /* VideoCapturePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapturePresenter.swift; sourceTree = "<group>"; };
-		FF46D1712C66D694007BEA21 /* VideoCaptureInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureInteractor.swift; sourceTree = "<group>"; };
+		FF46D1762C67105D007BEA21 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		FF46D1792C6732BA007BEA21 /* CaptureCameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureCameraViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +57,7 @@
 		FF46D1572C66D117007BEA21 /* Mommy */ = {
 			isa = PBXGroup;
 			children = (
+				FF46D1782C6732AD007BEA21 /* ViewModels */,
 				FF46D1732C66F398007BEA21 /* Presenters */,
 				FF46D1702C66D680007BEA21 /* Interactors */,
 				FF46D1682C66D40F007BEA21 /* Views */,
@@ -84,8 +81,7 @@
 		FF46D1682C66D40F007BEA21 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FF46D16B2C66D56E007BEA21 /* CALayerView.swift */,
-				FF46D1692C66D43A007BEA21 /* ScanView.swift */,
+				FF46D1762C67105D007BEA21 /* ScanView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -93,7 +89,6 @@
 		FF46D1702C66D680007BEA21 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
-				FF46D1712C66D694007BEA21 /* VideoCaptureInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -101,9 +96,16 @@
 		FF46D1732C66F398007BEA21 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				FF46D16D2C66D648007BEA21 /* VideoCapturePresenter.swift */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		FF46D1782C6732AD007BEA21 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FF46D1792C6732BA007BEA21 /* CaptureCameraViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,13 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF46D16E2C66D64A007BEA21 /* VideoCapturePresenter.swift in Sources */,
-				FF46D16C2C66D571007BEA21 /* CALayerView.swift in Sources */,
+				FF46D17A2C6732BB007BEA21 /* CaptureCameraViewModel.swift in Sources */,
+				FF46D1772C671062007BEA21 /* ScanView.swift in Sources */,
 				FF46D15B2C66D117007BEA21 /* ContentView.swift in Sources */,
-				FF46D1722C66D697007BEA21 /* VideoCaptureInteractor.swift in Sources */,
 				FF46D15D2C66D117007BEA21 /* Item.swift in Sources */,
 				FF46D1592C66D117007BEA21 /* MommyApp.swift in Sources */,
-				FF46D16A2C66D445007BEA21 /* ScanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

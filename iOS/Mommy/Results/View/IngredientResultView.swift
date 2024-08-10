@@ -49,13 +49,13 @@ struct IngredientResultView: View {
             LazyVStack(pinnedViews: [.sectionHeaders]) {
                 Section(header: stickyHeader()) {
                     VStack(alignment: .leading, spacing: 16) {
-                        Group {
-                            riskSection(title: "Danger Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore < 0 }, titleColor: .red)
-                            
-                            riskSection(title: "Neutral Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore == 0 }, titleColor: .gray)
-                            
-                            riskSection(title: "Good Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore > 0 }, titleColor: .green)
-                        }
+//                        Group {
+//                            riskSection(title: "Danger Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore < 0 }, titleColor: .red)
+//                            
+//                            riskSection(title: "Neutral Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore == 0 }, titleColor: .gray)
+//                            
+//                            riskSection(title: "Good Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore > 0 }, titleColor: .green)
+//                        }
                     }
                     .padding()
                 }
@@ -114,9 +114,9 @@ struct IngredientRiskView: View {
                     .foregroundColor(.red)
             }
             
-            Text(risk.riskCategory)
-                .font(.subheadline)
-                .foregroundColor(.red)
+//            Text(risk.riskCategory)
+//                .font(.subheadline)
+//                .foregroundColor(.red)
             
             Text(risk.riskDescription)
                 .font(.body)

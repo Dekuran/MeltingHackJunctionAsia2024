@@ -97,7 +97,7 @@ final class HomeViewModel: ObservableObject {
                 }
                 
                 if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    print("Full JSON Response: \(jsonResponse)")
+                   // print("Full JSON Response: \(jsonResponse)")
                     
                     if let choices = jsonResponse["choices"] as? [[String: Any]],
                        let message = choices.first?["message"] as? [String: Any],

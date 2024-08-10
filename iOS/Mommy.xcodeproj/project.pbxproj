@@ -17,6 +17,7 @@
 		20CF73C72C6762C600B3F470 /* OnboardingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73C12C6762C600B3F470 /* OnboardingWelcomeView.swift */; };
 		20CF73C82C6762C600B3F470 /* RootOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73C22C6762C600B3F470 /* RootOnboardingView.swift */; };
 		20CF73CC2C67639600B3F470 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 20CF73CB2C67639600B3F470 /* Lottie */; };
+		20CF73CF2C677DFD00B3F470 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73CE2C677DFD00B3F470 /* ViewExtension.swift */; };
 		FF46D1592C66D117007BEA21 /* MommyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1582C66D117007BEA21 /* MommyApp.swift */; };
 		FF46D15B2C66D117007BEA21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D15A2C66D117007BEA21 /* ContentView.swift */; };
 		FF46D15D2C66D117007BEA21 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D15C2C66D117007BEA21 /* Item.swift */; };
@@ -43,6 +44,8 @@
 		20CF73C02C6762C600B3F470 /* EnterInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterInfoView.swift; sourceTree = "<group>"; };
 		20CF73C12C6762C600B3F470 /* OnboardingWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeView.swift; sourceTree = "<group>"; };
 		20CF73C22C6762C600B3F470 /* RootOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootOnboardingView.swift; sourceTree = "<group>"; };
+		20CF73CD2C677D7A00B3F470 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		20CF73CE2C677DFD00B3F470 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		FF46D1552C66D117007BEA21 /* Mommy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mommy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46D1582C66D117007BEA21 /* MommyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MommyApp.swift; sourceTree = "<group>"; };
 		FF46D15A2C66D117007BEA21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 		FF46D1572C66D117007BEA21 /* Mommy */ = {
 			isa = PBXGroup;
 			children = (
+				20CF73CD2C677D7A00B3F470 /* Info.plist */,
 				20CF73C32C6762C600B3F470 /* Onboarding */,
 				FF46D18B2C674C62007BEA21 /* Home */,
 				FF46D1862C67474E007BEA21 /* Helper */,
@@ -218,6 +222,7 @@
 			children = (
 				FF46D1892C674986007BEA21 /* UIColor+.swift */,
 				FF46D1872C67475D007BEA21 /* UIScreen+.swift */,
+				20CF73CE2C677DFD00B3F470 /* ViewExtension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				20CF73AC2C67351D00B3F470 /* IngredientResultView.swift in Sources */,
 				FF46D17C2C673740007BEA21 /* CheckFoodAPIRequest.swift in Sources */,
 				20CF73AB2C67351D00B3F470 /* IngredientModel.swift in Sources */,
+				20CF73CF2C677DFD00B3F470 /* ViewExtension.swift in Sources */,
 				FF46D17A2C6732BB007BEA21 /* CaptureCameraViewModel.swift in Sources */,
 				FF46D1852C6746BF007BEA21 /* CapturePreview.swift in Sources */,
 				FF46D1832C67404E007BEA21 /* Router.swift in Sources */,
@@ -471,12 +477,14 @@
 				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mommy/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please arrow to capture image to search item";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -502,12 +510,14 @@
 				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mommy/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please arrow to capture image to search item";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

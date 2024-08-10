@@ -96,6 +96,7 @@ struct ScanView: View {
             Color(uiColor: .preimary)
             VStack {
                 Spacer()
+                TextView()
                 toggleButton
             }
         }

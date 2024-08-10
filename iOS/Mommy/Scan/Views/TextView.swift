@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import Lottie
 
 struct TextView: View {
     
@@ -17,46 +18,14 @@ struct TextView: View {
     @State var inputText: String = ""
     @State private var animateBigCircle = false
     @State private var animateSmallCircle = false
-    @State private var animateText = false
 
     var body: some View {
         ZStack {
             mainContent
-//            if !isSplash {
-//                VStack {
-//                    chatHeader
-//                    Spacer()
-//                }
-//                .ignoresSafeArea()
-//            }
-//            if !isSplash {
-//                VStack {
-//                    Spacer()
-//                    ZStack {
-//                        LinearGradient(colors: [gradientColor, backgroundColor, backgroundColor, backgroundColor], startPoint: .top, endPoint: .bottom)
-//                            .frame(height: isEditing ? 120 : 0)
-//                        textInputView
-//                            .frame(height: isEditing ? 100 : 0)
-//                            .padding(.bottom, 20)
-//                            .animation(.easeOut, value: isEditing)
-//                    }
-//                }
-//            }
+            
             if !isEditing {
                 VStack {
                     Spacer()
-//                    if !isSplash {
-//                        if isRecording || !speechRecognizer.transcript.isEmpty {
-//                            ScrollView {
-//                                Text(speechRecognizer.transcript)
-//                                    .font(.system(size: 24))
-//                                    .foregroundColor(.white)
-//                            }
-//                            .padding(.horizontal, 36)
-//                            .frame(maxHeight: 100)
-//                            .background(RoundedRectangle(cornerRadius: 20).foregroundColor(backgroundColor))
-//                        }
-//                    }
                     footer
                 }
                 .ignoresSafeArea()
@@ -68,63 +37,25 @@ struct TextView: View {
         ScrollViewReader { proxy in
             VStack {
                 ScrollView {
-//                    if isSplash {
-                        initBody
-//                    } else {
-//                        chatBody
-//                            .onChange(of: chatHistories.count) { count in
-//                                print("count: \(count)")
-//                                proxy.scrollTo(chatHistories.last, anchor: .bottom)
-//                            }
-//                    }
-                }
-            }
-        }
-    }
+                    VStack {
+                        Spacer()
+                        LottieView(animation: .named("SpeechBubble"))
+                            .playing(loopMode: .loop)
 
-    var initBody: some View {
-        VStack {
-            Spacer()
-//            ZStack {
-//                let url = Bundle.main.url(forResource: "main_circle", withExtension: "gif")
-//                AnimatedGifView(url: url)
-//                Image("main_circle")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .padding(.horizontal, 36)
-//                    .matchedGeometryEffect(id: "circleImage", in: switchAnimation)
-//                if animateText {
-//                    VStack {
-//                        Text("Hi, how can I help you?")
-//                            .font(.system(size: 20))
-//                            .foregroundColor(.white)
-//                            .transition(.scale)
-//                        Spacer().frame(height: 16)
-//                        Text("Go ahead, I’m listening")
-//                            .font(.system(size: 16))
-////                            .foregroundColor(placeholderGray)
-//                            .transition(.scale)
-//                    }
-//                    .opacity(isSplash ? 1.0 : 0.0)
-//                }
-//            }
-//            Spacer()
-            if isRecording {
-                ScrollView {
-                    Text(speechRecognizer.transcript)
-                        .font(.system(size: 24))
-                        .foregroundColor(.white)
+                        if isRecording {
+                            ScrollView {
+                                Text(speechRecognizer.transcript)
+                                    .font(.system(size: 24))
+                                    .foregroundColor(Color(uiColor: .button))
+                            }
+                            .padding(.horizontal, 36)
+                            .frame(maxHeight: 100)
+                        } else {
+                            textInputView
+                        }
+                        Spacer().frame(height: 48)
+                    }
                 }
-                .padding(.horizontal, 36)
-                .frame(maxHeight: 100)
-            } else {
-                textInputView
-            }
-            Spacer().frame(height: 48)
-        }
-        .onAppear {
-            withAnimation() {
-                animateText = true
             }
         }
     }
@@ -133,7 +64,7 @@ struct TextView: View {
         HStack(spacing: 4) {
             TextField("", text: $inputText, axis: .vertical)
                 .font(.system(size: 24))
-                .foregroundColor(.white)
+                .foregroundColor(Color(uiColor: .button))
                 .focused($isEditing)
                 .onSubmit { isEditing = false }
                 .padding(.horizontal, 36)
@@ -149,7 +80,8 @@ struct TextView: View {
                     Image(systemName: "paperplane.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 57, height: 57)
+                        .frame(width: 32, height: 32)
+                        .accentColor(Color(uiColor: .button))
                 }
                 .frame(width: 57, height: 57)
                 .padding(.trailing, 24)
@@ -159,8 +91,6 @@ struct TextView: View {
     
     var footer: some View {
         ZStack {
-            LinearGradient(colors: [gradientColor, backgroundColor, backgroundColor, backgroundColor], startPoint: .top, endPoint: .bottom)
-                .frame(height: 148)
             HStack(alignment: .bottom) {
                 Button(action: {
                     isEditing = true
@@ -168,7 +98,8 @@ struct TextView: View {
                     Image(systemName: "keyboard")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 57, height: 57)
+                        .frame(width: 32, height: 32)
+                        .accentColor(Color(uiColor: .button))
                 })
                 .frame(width: 57, height: 57)
                 Spacer()
@@ -187,14 +118,14 @@ struct TextView: View {
                             Circle() // Big circle
                                 .stroke()
                                 .frame(width: 140, height: 140)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color(uiColor: .button))
                                 .scaleEffect(animateBigCircle ? 1 : 0.3)
                                 .opacity(animateBigCircle ? 0: 1)
                                 .animation (Animation.easeInOut (duration:2)
                                     .repeatForever(autoreverses: false))
                                 .onAppear() { self.animateBigCircle.toggle() }
                             Circle () //Gray
-                                .foregroundColor(themeBlue.opacity(0.5))
+                                .foregroundColor(Color(uiColor: .secondary).opacity(0.5))
                                 .frame(width: 88, height: 88)
                                 .scaleEffect(animateSmallCircle ? 0.9 : 1.2)
                                 .animation(Animation.easeInOut (duration: 0.4)
@@ -203,13 +134,15 @@ struct TextView: View {
                             Image(systemName: "stop.fill")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 88, height: 88)
+                                .frame(width: 56, height: 56)
+                                .accentColor(Color(uiColor: .button))
                         }
                     } else {
-                        Image(systemName: "waveform")
+                        Image(systemName: "mic")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 88, height: 88)
+                            .frame(width: 56, height: 56)
+                            .accentColor(Color(uiColor: .button))
                     }
                 }
                 .frame(width: 88, height: 88)
@@ -224,7 +157,9 @@ struct TextView: View {
                     Image(systemName: "paperplane.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 57, height: 57)
+                        .frame(width: 32, height: 32)
+                        .accentColor(Color(uiColor: .button))
+
                 }
                 .frame(width: 57, height: 57)
             }

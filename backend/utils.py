@@ -59,8 +59,9 @@ def add_selected_user_data_to_ingredients(response_df, selected_user_id):
 
 def compare_new_ingredient_image_response_to_risk_lookup(response_df):
     fda_risk_lookup = pd.read_csv(FDA_INGREDIENT_LOOKUP_LOCATION)
-    simple_risks_df = fda_risk_lookup[["additive","riskScore", "riskCategory"]] ## TODO skip this step by preprocessing to this smaller dataset
-    simple_risks_df.rename(columns={'additive':'ingredient'}, inplace=True)
+    fda_risk_lookup["ingredient"] =  fda_risk_lookup["additive"].lower().trim()
+    response_df["ingredient"] = response_df["ingredient"].lower().trim()
+    simple_risks_df = fda_risk_lookup[["ingredient","riskScore", "riskCategory"]] ## TODO skip this step by preprocessing to this smaller dataset
     ingredients_with_risks =  response_df.merge(simple_risks_df, how="left", on="ingredient").sort_values("riskScore", ascending = False)
     ingredients_with_risks_json = [ingredients_with_risks.to_json(orient='records', lines=True)]
     return ingredients_with_risks_json
@@ -80,7 +81,7 @@ def identify_ingredients_from_text(input_text, client):
     return response.choices[0].message.content
 
 
-def generate_response_from_image_and_user(image, user):
+def generate_response_from_image_and_user(image, user, client):
     image = encode_image(image)
     imageIngredientsJson = identify_ingredients_from_label(image, client)
     imageIngredientsDf = process_new_ingredient_image_response(imageIngredientsJson)

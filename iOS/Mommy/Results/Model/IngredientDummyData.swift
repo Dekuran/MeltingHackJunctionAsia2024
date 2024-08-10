@@ -5,76 +5,115 @@
 //  Created by Kyubo Shim on 8/10/24.
 //
 
-struct IngredientDummyData{
+struct IngredientDummyData {
     static let ingredientRisks: [IngredientRisk] = [
-        // 위험 요소 (-5에서 0 미만)
         IngredientRisk(
+            product: "Coca-Cola",
+            ingredient: "Phosphoric Acid",
+            ingredientType: "Acidulant",
+            amount: nil, // null 값은 nil로 처리
+            unit: "",
+            responseNo: 19,
+            responseId: "19",
+            responseTimeStamp: 1723351032,
+            userId: "id_19",
+            pregnancyStatus: "embryo",
+            pregnancyOrPostBirthWeeks: 35,
+            riskScore: 1.0,
+            riskCategory: "Low",
+            riskDescription: "Phosphoric acid is generally considered safe but should be consumed in moderation during pregnancy.",
+            riskSortOrder: 1,
+            hexColor: "#00FF00"
+        ),
+        IngredientRisk(
+            product: "Coca-Cola",
             ingredient: "Caffeine",
             ingredientType: "Stimulant",
-            riskScore: -5,
-            riskCategory: "High",
-            riskDescription: "Caffeine can increase blood pressure and heart rate, which can be harmful during pregnancy.",
-            pregnancyStatus: "during",
-            pregnancyOrPostBirthWeeks: 12,
-            riskSortOrder: 1,
-            hexColor: "#FF0000"
-        ),
-        IngredientRisk(
-            ingredient: "Alcohol",
-            ingredientType: "Stimulant",
-            riskScore: -4,
-            riskCategory: "High",
-            riskDescription: "Alcohol consumption during pregnancy can lead to serious developmental issues for the baby.",
-            pregnancyStatus: "during",
-            pregnancyOrPostBirthWeeks: 0,
+            amount: nil,
+            unit: "",
+            responseNo: 19,
+            responseId: "19",
+            responseTimeStamp: 1723351032,
+            userId: "id_19",
+            pregnancyStatus: "embryo",
+            pregnancyOrPostBirthWeeks: 35,
+            riskScore: 0.0,
+            riskCategory: "No Risk",
+            riskDescription: "Caffeine in small amounts is generally safe during pregnancy.",
             riskSortOrder: 2,
-            hexColor: "#FF0000"
+            hexColor: "#00FF00"
         ),
-        // 중립 요소 (0)
         IngredientRisk(
-            ingredient: "Water",
-            ingredientType: "Hydration",
-            riskScore: 0,
-            riskCategory: "Neutral",
-            riskDescription: "Water is essential for hydration, but has no direct positive or negative impact.",
-            pregnancyStatus: "during",
-            pregnancyOrPostBirthWeeks: 20,
+            product: "Coca-Cola",
+            ingredient: "Carbonated Water",
+            ingredientType: "Base",
+            amount: nil,
+            unit: "",
+            responseNo: 19,
+            responseId: "19",
+            responseTimeStamp: 1723351032,
+            userId: "id_19",
+            pregnancyStatus: "embryo",
+            pregnancyOrPostBirthWeeks: 35,
+            riskScore: nil, // null 값은 nil로 처리
+            riskCategory: nil, // null 값은 nil로 처리
+            riskDescription: "Carbonated water is safe and has no associated risks during pregnancy.",
             riskSortOrder: 3,
-            hexColor: "#0000FF"
+            hexColor: "#808080"
         ),
         IngredientRisk(
-            ingredient: "Fiber",
-            ingredientType: "Dietary",
-            riskScore: 0,
-            riskCategory: "Neutral",
-            riskDescription: "Fiber helps with digestion, but does not significantly impact pregnancy risk.",
-            pregnancyStatus: "pre",
-            pregnancyOrPostBirthWeeks: 10,
+            product: "Coca-Cola",
+            ingredient: "Sugar",
+            ingredientType: "Sweetener",
+            amount: nil,
+            unit: "",
+            responseNo: 19,
+            responseId: "19",
+            responseTimeStamp: 1723351032,
+            userId: "id_19",
+            pregnancyStatus: "embryo",
+            pregnancyOrPostBirthWeeks: 35,
+            riskScore: nil,
+            riskCategory: nil,
+            riskDescription: "Sugar should be consumed in moderation, but it does not pose a significant risk.",
             riskSortOrder: 4,
             hexColor: "#808080"
         ),
-        // 건강한 요소 (0 초과)
         IngredientRisk(
-            ingredient: "Folic Acid",
-            ingredientType: "Nutrient",
-            riskScore: 4,
-            riskCategory: "Low",
-            riskDescription: "Folic acid is crucial for preventing neural tube defects in the developing baby.",
-            pregnancyStatus: "pre",
-            pregnancyOrPostBirthWeeks: 0,
+            product: "Coca-Cola",
+            ingredient: "Caramel Color",
+            ingredientType: "Color",
+            amount: nil,
+            unit: "",
+            responseNo: 19,
+            responseId: "19",
+            responseTimeStamp: 1723351032,
+            userId: "id_19",
+            pregnancyStatus: "embryo",
+            pregnancyOrPostBirthWeeks: 35,
+            riskScore: nil,
+            riskCategory: nil,
+            riskDescription: "Caramel color is safe in the amounts typically found in food and beverages.",
             riskSortOrder: 5,
-            hexColor: "#00FF00"
+            hexColor: "#808080"
         ),
         IngredientRisk(
-            ingredient: "Calcium",
-            ingredientType: "Nutrient",
-            riskScore: 5,
-            riskCategory: "Low",
-            riskDescription: "Calcium supports the development of strong bones and teeth for the baby.",
-            pregnancyStatus: "during",
-            pregnancyOrPostBirthWeeks: 16,
+            product: "Coca-Cola",
+            ingredient: "Natural Flavors",
+            ingredientType: "Flavor",
+            amount: nil,
+            unit: "",
+            responseNo: 19,
+            responseId: "19",
+            responseTimeStamp: 1723351032,
+            userId: "id_19",
+            pregnancyStatus: "embryo",
+            pregnancyOrPostBirthWeeks: 35,
+            riskScore: nil,
+            riskCategory: nil,
+            riskDescription: "Natural flavors are generally considered safe during pregnancy.",
             riskSortOrder: 6,
-            hexColor: "#00FF00"
+            hexColor: "#808080"
         )
     ]
 }

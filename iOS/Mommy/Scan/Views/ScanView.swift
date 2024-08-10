@@ -17,6 +17,7 @@ struct ScanView: View {
     
     @ObservedObject private(set) var viewModel = CaptureCameraViewModel()
     @State private var screenType: ScreenType = .camera
+    @State private var ingredientRisks: [IngredientRisk] = []
     
     var body: some View {
         ZStack {
@@ -41,10 +42,35 @@ struct ScanView: View {
             guard let pngData = imageData?.pngData() else {
                 return
             }
+            screenType = .requesting // 먼저 requesting 상태로 전환
+            
             Task {
-                let requestKey = try? await CheckFoodAPIRequest.postImage(with: pngData) ?? ""
-                screenType = .result
-            }        }
+                do {
+                    let responseString = try await CheckFoodAPIRequest.postImage(with: pngData)
+                    
+                    // JSON 문자열을 개별 라인으로 나누고 각 라인을 디코딩
+                    let responseLines = responseString.components(separatedBy: "\n")
+                    var risks: [IngredientRisk] = []
+                    
+                    for line in responseLines {
+                        if let data = line.data(using: .utf8), !data.isEmpty {
+                            let risk = try JSONDecoder().decode(IngredientRisk.self, from: data)
+                            risks.append(risk)
+                        }
+                    }
+                    
+                    ingredientRisks = risks
+                    
+                    if !ingredientRisks.isEmpty {
+                        screenType = .result
+                    } else {
+                        print("Received empty response. Remaining in requesting state.")
+                    }
+                } catch {
+                    print("Error: \(error)")
+                }
+            }
+        }
     }
     
     var cameraView: some View {
@@ -78,6 +104,10 @@ struct ScanView: View {
     var requestingView: some View {
         ZStack {
             Color(uiColor: .preimary)
+            
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                .foregroundColor(.white)
         }
     }
     

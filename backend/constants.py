@@ -1,7 +1,5 @@
-import OpenAI
 MODEL="gpt-4o"
 OPENAI_API_KEY = "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"
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "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"))
 INGREDIENT_IMAGE_PROCESSING_SYSTEM_PROMPT = """
         You are a helpful assistant that identifies the ingredients from images of food and drinks packaging labels 
          in multiple languages and returns a JSON output of the ingredients in STRICTLY the following format:
@@ -31,9 +29,11 @@ INGREDIENT_IMAGE_PROCESSING_USER_PROMPT = """"
              """
 
 
-RESPONSES_SAVE_LOCATION = "ingredient_image_responses.csv"
+RESPONSES_SAVE_LOCATION = "backend/data/ingredient_image_responses.csv"
 
-FDA_INGREDIENT_LOOKUP_LOCATION = "fda_additives_reference.csv"
+FDA_INGREDIENT_LOOKUP_LOCATION = "backend/data/fda_additives_reference.csv"
+
+USER_DATA_LOCATION = "backend/data/userData.csv"
 
 
 INGREDIENT_TEXT_PROCESSING_SYSTEM_PROMPT = """
@@ -49,8 +49,8 @@ INGREDIENT_TEXT_PROCESSING_SYSTEM_PROMPT = """
          Guess ingredientType. Leave amount and unit blank.
          
          Only return VALID JSON with no explanation or comments.
-
          """
 
 
 
+AVG_PREGNANCY_DURATION_DAYS = 268 # source = https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3777570/

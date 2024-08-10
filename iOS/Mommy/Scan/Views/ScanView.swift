@@ -38,13 +38,21 @@ struct ScanView: View {
         }
         .background(Color(uiColor: .preimary))
         .onChange(of: viewModel.imageData) { imageData in
-            guard let pngData = imageData?.pngData() else {
+            guard let pngData = imageData?.resized(withPercentage: 0.01)?.pngData() else {
                 return
             }
+            print("pngData: \(pngData)")
             Task {
-                let requestKey = try? await CheckFoodAPIRequest.postImage(with: pngData) ?? ""
-                screenType = .result
-            }        }
+                do {
+                    let requestKey = try? await CheckFoodAPIRequest.postImage(with: pngData) ?? ""
+                    print("requestKey: \(requestKey)")
+                    screenType = .result
+                }
+                catch {
+                    print("request error: \(error).")
+                }
+            }
+        }
     }
     
     var cameraView: some View {
@@ -118,8 +126,13 @@ struct ScanView: View {
             } label: {
                 ZStack {
                     Color(uiColor: .preimary)
+                    if screenType == .camera {
+                        RoundedRectangle(cornerRadius: 8.0)
+                            .foregroundColor(.init(uiColor: .secondary))
+                            .padding(4)
+                    }
                     Text("Camera")
-                        .font(.system(size: 32, weight: .bold))
+                        .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.init(uiColor: .button))
                 }
             }
@@ -131,12 +144,27 @@ struct ScanView: View {
             } label: {
                 ZStack {
                     Color(uiColor: .preimary)
+                    if screenType == .text {
+                        RoundedRectangle(cornerRadius: 8.0)
+                            .foregroundColor(.init(uiColor: .secondary))
+                            .padding(4)
+                    }
                     Text("Text")
-                        .font(.system(size: 32, weight: .bold))
+                        .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.init(uiColor: .button))
                 }
             }
         }
         .frame(width: .infinity, height: 56.0)
+        .padding(.horizontal, 16)
+    }
+}
+extension UIImage {
+    //データサイズを変更する
+    func resized(withPercentage percentage: CGFloat) -> UIImage? {
+        let canvas = CGSize(width: size.width * percentage, height: size.height * percentage)
+        return UIGraphicsImageRenderer(size: canvas, format: imageRendererFormat).image {
+            _ in draw(in: CGRect(origin: .zero, size: canvas))
+        }
     }
 }

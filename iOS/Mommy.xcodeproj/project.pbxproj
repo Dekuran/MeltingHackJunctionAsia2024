@@ -18,6 +18,12 @@
 		FF46D1622C66D119007BEA21 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46D1612C66D119007BEA21 /* Preview Assets.xcassets */; };
 		FF46D1772C671062007BEA21 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1762C67105D007BEA21 /* ScanView.swift */; };
 		FF46D17A2C6732BB007BEA21 /* CaptureCameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1792C6732BA007BEA21 /* CaptureCameraViewModel.swift */; };
+		FF46D17C2C673740007BEA21 /* CheckFoodAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D17B2C673724007BEA21 /* CheckFoodAPIRequest.swift */; };
+		FF46D1802C673CC5007BEA21 /* APIRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D17F2C673CC4007BEA21 /* APIRequestHelper.swift */; };
+		FF46D1832C67404E007BEA21 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1822C674047007BEA21 /* Router.swift */; };
+		FF46D1852C6746BF007BEA21 /* CapturePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1842C6746BE007BEA21 /* CapturePreview.swift */; };
+		FF46D1882C674765007BEA21 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1872C67475D007BEA21 /* UIScreen+.swift */; };
+		FF46D18A2C674989007BEA21 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1892C674986007BEA21 /* UIColor+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +39,12 @@
 		FF46D1612C66D119007BEA21 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FF46D1762C67105D007BEA21 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		FF46D1792C6732BA007BEA21 /* CaptureCameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureCameraViewModel.swift; sourceTree = "<group>"; };
+		FF46D17B2C673724007BEA21 /* CheckFoodAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFoodAPIRequest.swift; sourceTree = "<group>"; };
+		FF46D17F2C673CC4007BEA21 /* APIRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestHelper.swift; sourceTree = "<group>"; };
+		FF46D1822C674047007BEA21 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		FF46D1842C6746BE007BEA21 /* CapturePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturePreview.swift; sourceTree = "<group>"; };
+		FF46D1872C67475D007BEA21 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
+		FF46D1892C674986007BEA21 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +112,10 @@
 		FF46D1572C66D117007BEA21 /* Mommy */ = {
 			isa = PBXGroup;
 			children = (
+				FF46D1862C67474E007BEA21 /* Helper */,
+				FF46D1822C674047007BEA21 /* Router.swift */,
+				FF46D17D2C6737BF007BEA21 /* Scan */,
 				20CF73A92C67351D00B3F470 /* Results */,
-				FF46D1782C6732AD007BEA21 /* ViewModels */,
-				FF46D1682C66D40F007BEA21 /* Views */,
 				FF46D1582C66D117007BEA21 /* MommyApp.swift */,
 				FF46D15A2C66D117007BEA21 /* ContentView.swift */,
 				FF46D15C2C66D117007BEA21 /* Item.swift */,
@@ -123,6 +136,7 @@
 		FF46D1682C66D40F007BEA21 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF46D1842C6746BE007BEA21 /* CapturePreview.swift */,
 				FF46D1762C67105D007BEA21 /* ScanView.swift */,
 			);
 			path = Views;
@@ -134,6 +148,34 @@
 				FF46D1792C6732BA007BEA21 /* CaptureCameraViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FF46D17D2C6737BF007BEA21 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				FF46D17E2C6737D8007BEA21 /* Requests */,
+				FF46D1782C6732AD007BEA21 /* ViewModels */,
+				FF46D1682C66D40F007BEA21 /* Views */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		FF46D17E2C6737D8007BEA21 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				FF46D17F2C673CC4007BEA21 /* APIRequestHelper.swift */,
+				FF46D17B2C673724007BEA21 /* CheckFoodAPIRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		FF46D1862C67474E007BEA21 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FF46D1892C674986007BEA21 /* UIColor+.swift */,
+				FF46D1872C67475D007BEA21 /* UIScreen+.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,14 +249,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				20CF73AC2C67351D00B3F470 /* IngredientResultView.swift in Sources */,
+				FF46D17C2C673740007BEA21 /* CheckFoodAPIRequest.swift in Sources */,
 				20CF73AB2C67351D00B3F470 /* IngredientModel.swift in Sources */,
 				FF46D17A2C6732BB007BEA21 /* CaptureCameraViewModel.swift in Sources */,
+				FF46D1852C6746BF007BEA21 /* CapturePreview.swift in Sources */,
+				FF46D1832C67404E007BEA21 /* Router.swift in Sources */,
 				FF46D1772C671062007BEA21 /* ScanView.swift in Sources */,
 				FF46D15B2C66D117007BEA21 /* ContentView.swift in Sources */,
+				FF46D1802C673CC5007BEA21 /* APIRequestHelper.swift in Sources */,
+				FF46D1882C674765007BEA21 /* UIScreen+.swift in Sources */,
 				20CF73AA2C67351D00B3F470 /* IngredientDummyData.swift in Sources */,
 				20CF73AD2C67351D00B3F470 /* IngredientResultViewModel.swift in Sources */,
 				FF46D15D2C66D117007BEA21 /* Item.swift in Sources */,
 				FF46D1592C66D117007BEA21 /* MommyApp.swift in Sources */,
+				FF46D18A2C674989007BEA21 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

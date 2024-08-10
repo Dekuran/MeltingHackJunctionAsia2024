@@ -51,16 +51,10 @@ struct ScanView: View {
         ZStack {
             CapturePreview(captureCameraViewModel: viewModel)
                 .frame(width: UIScreen.screenWidth, height: UIScreen.screenWidth)
-            VStack {
+            VStack(spacing: 16.0) {
                 Spacer()
-                Button {
-                    viewModel.capture()
-                } label: {
-                    Image(systemName: "circle.inset.filled")
-                        .resizable(resizingMode: .stretch)
-                        .foregroundColor(.white)
-                }
-                .frame(width: 60, height: 60)
+                captureButton
+                toggleButton
             }
             
             if let uiimage = viewModel.imageData {
@@ -73,13 +67,17 @@ struct ScanView: View {
 
     var textView: some View {
         ZStack {
-            Color.red
+            Color(uiColor: .preimary)
+            VStack {
+                Spacer()
+                toggleButton
+            }
         }
     }
 
     var requestingView: some View {
         ZStack {
-            Color.blue
+            Color(uiColor: .preimary)
         }
     }
     
@@ -100,5 +98,45 @@ struct ScanView: View {
             .padding(.top, 8)
             Spacer()
         }
+    }
+    
+    var captureButton: some View {
+        Button {
+            viewModel.capture()
+        } label: {
+            Image(systemName: "circle.inset.filled")
+                .resizable(resizingMode: .stretch)
+                .foregroundColor(.white)
+        }
+        .frame(width: 60, height: 60)
+    }
+    
+    var toggleButton: some View {
+        HStack {
+            Button {
+                screenType = .camera
+            } label: {
+                ZStack {
+                    Color(uiColor: .preimary)
+                    Text("Camera")
+                        .font(.system(size: 32, weight: .bold))
+                        .foregroundColor(.init(uiColor: .button))
+                }
+            }
+            RoundedRectangle(cornerRadius: 1)
+                .foregroundColor(.init(uiColor: .button))
+                .frame(width: 2.0, height: 56.0)
+            Button {
+                screenType = .text
+            } label: {
+                ZStack {
+                    Color(uiColor: .preimary)
+                    Text("Text")
+                        .font(.system(size: 32, weight: .bold))
+                        .foregroundColor(.init(uiColor: .button))
+                }
+            }
+        }
+        .frame(width: .infinity, height: 56.0)
     }
 }

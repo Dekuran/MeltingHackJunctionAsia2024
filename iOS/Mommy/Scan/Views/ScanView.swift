@@ -22,6 +22,7 @@ struct ScanView: View {
     
     var body: some View {
         ZStack {
+            Color(uiColor: .preimary).ignoresSafeArea()
             switch screenType {
                 case .camera:
                     cameraView
@@ -38,7 +39,6 @@ struct ScanView: View {
             
             navigationBar
         }
-        .background(Color(uiColor: .preimary))
         .onChange(of: viewModel.imageData) { imageData in
             guard let pngData = imageData?.pngData() else {
                 return

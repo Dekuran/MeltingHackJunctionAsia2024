@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct IngredientRisk: Codable, Identifiable {
-    let id = UUID()
+    var id = UUID()
     let ingredient: String
     let ingredientType: String
     let riskScore: Int

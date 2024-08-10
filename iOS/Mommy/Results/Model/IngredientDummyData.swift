@@ -7,7 +7,7 @@
 
 struct IngredientDummyData{
     static let ingredientRisks: [IngredientRisk] = [
-        // 위험 요소 (-5에서 0 미만)
+        // Danger factor
         IngredientRisk(
             ingredient: "Caffeine",
             ingredientType: "Stimulant",
@@ -30,7 +30,7 @@ struct IngredientDummyData{
             riskSortOrder: 2,
             hexColor: "#FF0000"
         ),
-        // 중립 요소 (0)
+        // Neutral factor
         IngredientRisk(
             ingredient: "Water",
             ingredientType: "Hydration",
@@ -53,7 +53,7 @@ struct IngredientDummyData{
             riskSortOrder: 4,
             hexColor: "#808080"
         ),
-        // 건강한 요소 (0 초과)
+        // Good factor
         IngredientRisk(
             ingredient: "Folic Acid",
             ingredientType: "Nutrient",

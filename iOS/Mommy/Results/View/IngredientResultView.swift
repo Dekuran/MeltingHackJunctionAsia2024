@@ -10,7 +10,7 @@ import SwiftUI
 struct IngredientResultView: View {
     @StateObject private var viewModel: IngredientRiskViewModel
     
-    // DI를 위한 초기화 함수. 기본적으로 더미 데이터를 사용.
+    // DI init, used Dummy data for test
     init(viewModel: IngredientRiskViewModel = IngredientRiskViewModel(ingredientRisks: IngredientDummyData.ingredientRisks)) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -34,7 +34,6 @@ struct IngredientResultView: View {
         }
     }
     
-    // 위험 요소 섹션을 생성하는 함수
     @ViewBuilder
     private func riskSection(title: String, risks: [IngredientRisk], titleColor: Color) -> some View {
         if !risks.isEmpty {
@@ -49,7 +48,7 @@ struct IngredientResultView: View {
     }
 }
 
-// 개별 성분에 대한 정보를 표시하는 하위 뷰
+
 struct IngredientRiskView: View {
     let risk: IngredientRisk
     
@@ -89,7 +88,7 @@ struct IngredientRiskView: View {
     }
 }
 
-// Hex 코드를 기반으로 Color를 생성하는 확장 함수
+// Generate Color based on Hex code
 extension Color {
     init(hex: String) {
         let scanner = Scanner(string: hex)

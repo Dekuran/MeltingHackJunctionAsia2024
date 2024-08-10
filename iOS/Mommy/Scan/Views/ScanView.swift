@@ -17,21 +17,21 @@ struct ScanView: View {
     
     @ObservedObject private(set) var viewModel = CaptureCameraViewModel()
     @State private var screenType: ScreenType = .camera
-
+    
     var body: some View {
         ZStack {
             switch screenType {
-            case .camera:
-                cameraView
-                
-            case .text:
-                textView
-                
-            case .requesting:
-                requestingView
-                
-            case .result:
-                IngredientResultView()
+                case .camera:
+                    cameraView
+                    
+                case .text:
+                    textView
+                    
+                case .requesting:
+                    requestingView
+                    
+                case .result:
+                    IngredientResultView(captureCameraViewModel: viewModel)
             }
             
             navigationBar
@@ -64,7 +64,7 @@ struct ScanView: View {
             }
         }
     }
-
+    
     var textView: some View {
         ZStack {
             Color(uiColor: .preimary)
@@ -74,7 +74,7 @@ struct ScanView: View {
             }
         }
     }
-
+    
     var requestingView: some View {
         ZStack {
             Color(uiColor: .preimary)

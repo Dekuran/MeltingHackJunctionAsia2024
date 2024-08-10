@@ -9,29 +9,77 @@ import SwiftUI
 
 struct IngredientResultView: View {
     @StateObject private var viewModel: IngredientRiskViewModel
+    @ObservedObject private var captureCameraViewModel: CaptureCameraViewModel
     
     // DI를 위한 초기화 함수. 기본적으로 더미 데이터를 사용.
-    init(viewModel: IngredientRiskViewModel = IngredientRiskViewModel(ingredientRisks: IngredientDummyData.ingredientRisks)) {
+    init(viewModel: IngredientRiskViewModel = IngredientRiskViewModel(ingredientRisks: IngredientDummyData.ingredientRisks), captureCameraViewModel: CaptureCameraViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.captureCameraViewModel = captureCameraViewModel
     }
+    
+    @State private var offsetY: CGFloat = 0
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text("Result")
-                    .font(.largeTitle)
-                    .padding(.bottom, 10)
+            GeometryReader { geometry in
+                let offset = geometry.frame(in: .global).minY
                 
-                Group {
-                    riskSection(title: "Danger Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore < 0 }, titleColor: .red)
+                ZStack {
+                    if let image = captureCameraViewModel.imageData {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipped()
+                            .frame(width: geometry.size.width, height: 250 + (offset > 0 ? offset : 0))
+                            .offset(y: (offset > 0 ? -offset : 0))
+                    } else {
+                        Color.gray
+                            .frame(width: geometry.size.width, height: 250)
+                    }
                     
-                    riskSection(title: "Neutral Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore == 0 }, titleColor: .gray)
-                    
-                    riskSection(title: "Good Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore > 0 }, titleColor: .green)
+                    Text("Captured Image here")
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .offset(y: (offset > 0 ? -offset : 0))
                 }
             }
-            .padding()
+            .frame(height: 250)
+            
+            LazyVStack(pinnedViews: [.sectionHeaders]) {
+                Section(header: stickyHeader()) {
+                    VStack(alignment: .leading, spacing: 16) {
+                        Group {
+                            riskSection(title: "Danger Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore < 0 }, titleColor: .red)
+                            
+                            riskSection(title: "Neutral Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore == 0 }, titleColor: .gray)
+                            
+                            riskSection(title: "Good Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore > 0 }, titleColor: .green)
+                        }
+                    }
+                    .padding()
+                }
+            }
         }
+        .overlay(
+            Rectangle()
+                .foregroundColor(.white)
+                .frame(height: UIApplication.shared.windows.first?.safeAreaInsets.top)
+                .edgesIgnoringSafeArea(.all)
+                .opacity(offsetY > -250 ? 0 : 1)
+            , alignment: .top
+        )
+    }
+    
+    // Sticky Header를 위한 함수
+    @ViewBuilder
+    private func stickyHeader() -> some View {
+        Text("Food Name blah blah")
+            .font(.headline)
+            .padding()
+            .background(Color.white)
+            .cornerRadius(8)
+            .shadow(radius: 4)
     }
     
     // 위험 요소 섹션을 생성하는 함수
@@ -48,6 +96,7 @@ struct IngredientResultView: View {
         }
     }
 }
+
 
 // 개별 성분에 대한 정보를 표시하는 하위 뷰
 struct IngredientRiskView: View {
@@ -104,5 +153,5 @@ extension Color {
 }
 
 #Preview {
-    IngredientResultView()
+    IngredientResultView(captureCameraViewModel: CaptureCameraViewModel())
 }

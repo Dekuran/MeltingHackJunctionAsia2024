@@ -24,6 +24,7 @@
 		FF46D1852C6746BF007BEA21 /* CapturePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1842C6746BE007BEA21 /* CapturePreview.swift */; };
 		FF46D1882C674765007BEA21 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1872C67475D007BEA21 /* UIScreen+.swift */; };
 		FF46D18A2C674989007BEA21 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1892C674986007BEA21 /* UIColor+.swift */; };
+		FF46D18E2C674C84007BEA21 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D18D2C674C82007BEA21 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		FF46D1842C6746BE007BEA21 /* CapturePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturePreview.swift; sourceTree = "<group>"; };
 		FF46D1872C67475D007BEA21 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		FF46D1892C674986007BEA21 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		FF46D18D2C674C82007BEA21 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		FF46D1572C66D117007BEA21 /* Mommy */ = {
 			isa = PBXGroup;
 			children = (
+				FF46D18B2C674C62007BEA21 /* Home */,
 				FF46D1862C67474E007BEA21 /* Helper */,
 				FF46D1822C674047007BEA21 /* Router.swift */,
 				FF46D17D2C6737BF007BEA21 /* Scan */,
@@ -176,6 +179,22 @@
 				FF46D1872C67475D007BEA21 /* UIScreen+.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		FF46D18B2C674C62007BEA21 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FF46D18C2C674C75007BEA21 /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FF46D18C2C674C75007BEA21 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF46D18D2C674C82007BEA21 /* HomeView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +280,7 @@
 				20CF73AA2C67351D00B3F470 /* IngredientDummyData.swift in Sources */,
 				20CF73AD2C67351D00B3F470 /* IngredientResultViewModel.swift in Sources */,
 				FF46D15D2C66D117007BEA21 /* Item.swift in Sources */,
+				FF46D18E2C674C84007BEA21 /* HomeView.swift in Sources */,
 				FF46D1592C66D117007BEA21 /* MommyApp.swift in Sources */,
 				FF46D18A2C674989007BEA21 /* UIColor+.swift in Sources */,
 			);

@@ -13,12 +13,13 @@ enum ScreenType {
 
 struct ScanView: View {
     @Environment(\.presentationMode) var presentation
+    @Environment(\.dismiss) var dismiss
     
     @ObservedObject private(set) var viewModel = CaptureCameraViewModel()
     @State private var screenType: ScreenType = .camera
 
     var body: some View {
-        Group {
+        ZStack {
             switch screenType {
             case .camera:
                 cameraView
@@ -32,6 +33,8 @@ struct ScanView: View {
             case .result:
                 IngredientResultView()
             }
+            
+            navigationBar
         }
         .background(Color(uiColor: .preimary))
         .onChange(of: viewModel.imageData) { imageData in
@@ -77,6 +80,25 @@ struct ScanView: View {
     var requestingView: some View {
         ZStack {
             Color.blue
+        }
+    }
+    
+    var navigationBar: some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .resizable(resizingMode: .stretch)
+                        .frame(width: 24, height: 24)
+                        .accentColor(.init(uiColor: .button))
+                }
+                .frame(width: 44, height: 44)
+            }
+            .padding(.top, 8)
+            Spacer()
         }
     }
 }

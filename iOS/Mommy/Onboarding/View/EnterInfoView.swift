@@ -9,14 +9,25 @@ import SwiftUI
 
 struct EnterInfoView: View {
     @Environment(\.colorScheme) private var scheme
-    @State private var userName = ""
-    @State private var currentStage: String?
-    @State private var weekOfPregnancy = ""
-    @State private var dueDate = Date()
-    @State private var allergies = ""
+    @AppStorage("userName") private var userName = ""
+    @AppStorage("currentStage") private var currentStage: String?
+    @AppStorage("weekOfPregnancy") private var weekOfPregnancy = ""
+    @AppStorage("dueDate") private var dueDateString = ""
+    @AppStorage("allergies") private var allergies = ""
     @Binding var currentPage: Int
     
-    // 모든 필드가 채워졌는지 확인하는 변수
+    @State private var dueDate: Date = Date()
+
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }
+
+    private func updateDueDateString() {
+        dueDateString = dateFormatter.string(from: dueDate)
+    }
+
     private var isFormComplete: Bool {
         !userName.isEmpty && currentStage != nil && !weekOfPregnancy.isEmpty && !allergies.isEmpty
     }
@@ -82,6 +93,9 @@ struct EnterInfoView: View {
                             .cornerRadius(15)
                             .shadow(color: .black.opacity(0.2), radius: 3)
                             .frame(maxWidth: 350)
+                            .onChange(of: dueDate) { newValue in
+                                updateDueDateString()  // 날짜가 변경될 때마다 문자열 업데이트
+                            }
                     }
                     
                     Group {
@@ -111,7 +125,6 @@ struct EnterInfoView: View {
                         .background(isFormComplete ? Color(uiColor: .preimary) : Color.gray)
                         .cornerRadius(10)
                 })
-                .disabled(!isFormComplete)
                 
                 Spacer()
             }
@@ -122,6 +135,11 @@ struct EnterInfoView: View {
                         hideKeyboard()
                     }
             )
+        }
+        .onAppear {
+            if let date = dateFormatter.date(from: dueDateString) {
+                dueDate = date
+            }
         }
     }
 }

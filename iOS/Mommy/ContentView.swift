@@ -19,7 +19,7 @@ struct ContentView: View {
                     NavigationLink {
 //                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
 //                        ScanView(presenter: VideoCapturePresenter())
-                        CaptureCameraView()
+                        ScanView()
 
                     } label: {
                         Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))

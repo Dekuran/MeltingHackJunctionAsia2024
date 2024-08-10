@@ -35,7 +35,10 @@ def identify_ingredients_from_label(base64_image, client):
 def process_new_ingredient_image_response(responseJSON):
     this_response_df = pd.DataFrame(pd.read_json(responseJSON))
     past_responses_df = pd.read_csv(RESPONSES_SAVE_LOCATION)
-    MAX_RESPONSE_NO = max(max(past_responses_df["responseNo"]), 1)
+    if len(past_responses_df["responseNo"]) > 0:
+        MAX_RESPONSE_NO = max(past_responses_df["responseNo"])
+    else:
+        MAX_RESPONSE_NO = 0
     this_response_df["responseNo"] = MAX_RESPONSE_NO + 1
     this_response_df["responseId"] = this_response_df["responseNo"].astype('str')
     this_response_df["responseTimeStamp"] = pd.Timestamp.now()

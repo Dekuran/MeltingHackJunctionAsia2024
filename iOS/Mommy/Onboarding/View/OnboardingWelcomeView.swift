@@ -44,7 +44,7 @@ struct OnboardingWelcomeView: View {
                     .frame(maxWidth: .infinity)
                     .padding()
                     .foregroundColor(.white)
-                    .background(Color.blue)
+                    .background(Color(uiColor: .preimary))
                     .cornerRadius(10)
             })
             Spacer()

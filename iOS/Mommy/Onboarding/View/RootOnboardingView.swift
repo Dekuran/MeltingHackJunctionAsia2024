@@ -22,6 +22,8 @@ struct RootOnboardingView: View {
     var body: some View {
         if currentPage < pages.count {
             pages[currentPage]
+        } else {
+            HomeView()
         }
         
     }

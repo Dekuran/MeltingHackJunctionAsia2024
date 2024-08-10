@@ -94,7 +94,7 @@ struct EnterInfoView: View {
             Spacer()
             
             Button(action: {
-                
+                currentPage += 1
             }, label: {
                 Text("Let's Go!")
                     .font(.body)
@@ -102,7 +102,7 @@ struct EnterInfoView: View {
                     .frame(maxWidth: .infinity)
                     .padding()
                     .foregroundColor(.white)
-                    .background(Color.blue)
+                    .background(Color(uiColor: .preimary))
                     .cornerRadius(10)
                     .padding(.horizontal, 20)
             })

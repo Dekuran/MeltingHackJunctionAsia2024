@@ -25,7 +25,7 @@ struct MommyApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+           RootOnboardingView()
         }
         .modelContainer(sharedModelContainer)
     }

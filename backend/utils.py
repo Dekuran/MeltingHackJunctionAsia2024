@@ -1,5 +1,5 @@
 
-from constants import MODEL, OPENAI_API_KEY, INGREDIENT_IMAGE_PROCESSING_SYSTEM_PROMPT, INGREDIENT_IMAGE_PROCESSING_USER_PROMPT, RESPONSES_SAVE_LOCATION, FDA_INGREDIENT_LOOKUP_LOCATION, INGREDIENT_TEXT_PROCESSING_SYSTEM_PROMPT, USER_DATA_LOCATION
+from constants import MODEL, OPENAI_API_KEY, INGREDIENT_IMAGE_PROCESSING_SYSTEM_PROMPT, INGREDIENT_IMAGE_PROCESSING_USER_PROMPT, RESPONSES_SAVE_LOCATION, FDA_INGREDIENT_LOOKUP_LOCATION, INGREDIENT_TEXT_PROCESSING_SYSTEM_PROMPT, USER_DATA_LOCATION, DESCRIBE_IMAGE_SYSTEM, DESCRIBE_IMAGE_USER
 from openai import OpenAI
 import os
 import pandas as pd
@@ -22,6 +22,22 @@ def identify_ingredients_from_label(base64_image, client):
         {"role": "system", "content": INGREDIENT_IMAGE_PROCESSING_SYSTEM_PROMPT},
         {"role": "user", "content": [
             {"type": "text", "text": INGREDIENT_IMAGE_PROCESSING_USER_PROMPT},
+            {"type": "image_url", "image_url": {
+                "url": f"data:image/png;base64,{base64_image}"}
+            }
+        ]}
+    ],
+    temperature=0.0,
+    )
+    return response.choices[0].message.content
+
+def describe_image(base64_image, client):
+    response = client.chat.completions.create(
+    model=MODEL,
+    messages=[
+        {"role": "system", "content": DESCRIBE_IMAGE_SYSTEM},
+        {"role": "user", "content": [
+            {"type": "text", "text": DESCRIBE_IMAGE_USER},
             {"type": "image_url", "image_url": {
                 "url": f"data:image/png;base64,{base64_image}"}
             }
@@ -59,8 +75,9 @@ def add_selected_user_data_to_ingredients(response_df, selected_user_id):
 
 def compare_new_ingredient_image_response_to_risk_lookup(response_df):
     fda_risk_lookup = pd.read_csv(FDA_INGREDIENT_LOOKUP_LOCATION)
-    fda_risk_lookup["ingredient"] =  fda_risk_lookup["additive"].lower().trim()
-    response_df["ingredient"] = response_df["ingredient"].lower().trim()
+    fda_risk_lookup["ingredient"] =  fda_risk_lookup["additive"].str.lower()
+    display(response_df)
+    response_df["ingredient"] = response_df["ingredient"].str.lower()
     simple_risks_df = fda_risk_lookup[["ingredient","riskScore", "riskCategory"]] ## TODO skip this step by preprocessing to this smaller dataset
     ingredients_with_risks =  response_df.merge(simple_risks_df, how="left", on="ingredient").sort_values("riskScore", ascending = False)
     ingredients_with_risks_json = [ingredients_with_risks.to_json(orient='records', lines=True)]

@@ -1,0 +1,91 @@
+,abbreviation,fda_status,source
+0,&,and,FDA Miscellaneous Abbreviations
+1,amt,amount,FDA Miscellaneous Abbreviations
+2,art,artificially,FDA Miscellaneous Abbreviations
+3,avg,average,FDA Miscellaneous Abbreviations
+4,ca,"about, approximately",FDA Miscellaneous Abbreviations
+5,calc,calculated,FDA Miscellaneous Abbreviations
+6,CFR,Code of Federal Regulations,FDA Miscellaneous Abbreviations
+7,cnd,canned,FDA Miscellaneous Abbreviations
+8,cond,conditions,FDA Miscellaneous Abbreviations
+9,comb.,w/ in combination with; combined with,FDA Miscellaneous Abbreviations
+10,comp,component,FDA Miscellaneous Abbreviations
+11,ctg,"coating for fruits, vegetables, tablets",FDA Miscellaneous Abbreviations
+12,do,Same CFR reference as appears earlier in paragraph,FDA Miscellaneous Abbreviations
+13,dr,dried,FDA Miscellaneous Abbreviations
+14,F.R.,Federal Register,FDA Miscellaneous Abbreviations
+15,g,gram(s),FDA Miscellaneous Abbreviations
+16,GMP,In accordance with good manufacturing practices; or sufficient for purpose; or quantity not greater than required,FDA Miscellaneous Abbreviations
+17,incl,including,FDA Miscellaneous Abbreviations
+18,mfr,manufacture,FDA Miscellaneous Abbreviations
+19,mg,milligram(s),FDA Miscellaneous Abbreviations
+20,min,mineral,FDA Miscellaneous Abbreviations
+21,ml,milliliter,FDA Miscellaneous Abbreviations
+22,nonstdzd,nonstandardized,FDA Miscellaneous Abbreviations
+23,Part,Refers to Part number under Title 21 CFR,FDA Miscellaneous Abbreviations
+24,pdt,product,FDA Miscellaneous Abbreviations
+25,pdtn,production,FDA Miscellaneous Abbreviations
+26,pest,pesticide,FDA Miscellaneous Abbreviations
+27,pkg,packaging,FDA Miscellaneous Abbreviations
+28,ppm,parts per million,FDA Miscellaneous Abbreviations
+29,prepns,preparations,FDA Miscellaneous Abbreviations
+30,res,residue,FDA Miscellaneous Abbreviations
+31,sp,special dietary,FDA Miscellaneous Abbreviations
+32,suppl,supplement,FDA Miscellaneous Abbreviations
+33,sw,sweetened,FDA Miscellaneous Abbreviations
+34,tabs,tablets,FDA Miscellaneous Abbreviations
+35,temp,temporary,FDA Miscellaneous Abbreviations
+36,veg,vegetable(s),FDA Miscellaneous Abbreviations
+37,w/,with,FDA Miscellaneous Abbreviations
+38,w/o,without,FDA Miscellaneous Abbreviations
+39,wt,weight,FDA Miscellaneous Abbreviations
+40,X-ref,cross reference,FDA Miscellaneous Abbreviations
+41,<,less than,FDA Miscellaneous Abbreviations
+42,=,less than or equal to,FDA Miscellaneous Abbreviations
+43,>,greater than,FDA Miscellaneous Abbreviations
+44,=,greater than or equal to,FDA Miscellaneous Abbreviations
+45,+,plus,FDA Miscellaneous Abbreviations
+0,BAN,Substances banned prior to the Food Additives Amendment (FAA) because of toxicity. These substances are bolded and italicized.,FDA Regulatory Status
+1,FS,Substances permitted as optional ingredient in a standardized food.,FDA Regulatory Status
+2,GRAS,Generally recognized as safe. Substances in this category are by definitionGenerally recognized as safe. Substances in this category are by definitionunder Sec. 201(s) of the FD&C Act not food additives. Most GRAS substances have no quantitative restrictions as to use although their use must conform to good manufacturing practices. Some GRAS substances such as sodium benzoate do have a quantitative limit for use in foods.,FDA Regulatory Status
+3,GRAS/FS,Substances generally recognized as safe in foods but limited in standardized foods where the standard provides for its use.,FDA Regulatory Status
+4,ILL,Substances used or proposed for use as direct additives in foods without required clearance under the FAA. Their use is illegal. These substances are bolded and italicized.,FDA Regulatory Status
+5,PD,Substances for which a petition has been filed but denied because of lack of proof of safety. Substances in this category are illegal and may not be used in foods.,FDA Regulatory Status
+6,PS,Substances for which prior sanction has been granted by FDA for specific uses. There are a number of substances in this category not listed herein because they have not been published in the FEDERAL REGISTER.,FDA Regulatory Status
+7,REG,Food additives for which a petition has been filed and a regulation issued.,FDA Regulatory Status
+8,REG/FS,Food additives regulated under the FAA and included in a specific food standard.,FDA Regulatory Status
+0,AC,Anticaking agent,FDA Technical Effects
+1,AF,Antifoaming (or defoaming) agent,FDA Technical Effects
+2,AOX,Antioxidant,FDA Technical Effects
+3,BC,Boiler compound,FDA Technical Effects
+4,BL,Bleaching agent or flour-maturing agent,FDA Technical Effects
+5,B&N,Buffer and neutralizing agent,FDA Technical Effects
+6,CTG,Component or coating for fruits & vegetables,FDA Technical Effects
+7,DS,Dietary supplement,FDA Technical Effects
+8,EMUL,Emulsifier,FDA Technical Effects
+9,ENZ,Enzyme,FDA Technical Effects
+10,ESO,Essential oil and/or oleoresin (solvent free),FDA Technical Effects
+11,FEED,Substances under the Food Additives Amendment added directly to feed,FDA Technical Effects
+12,FLAV,Natural flavoring agent,FDA Technical Effects
+13,FL/ADJ,Substance used in conjunction with flavors,FDA Technical Effects
+14,FUM,Fumigant,FDA Technical Effects
+15,FUNG,Fungicide,FDA Technical Effects
+16,HERB,Herbicide,FDA Technical Effects
+17,HOR,Hormone,FDA Technical Effects
+18,INH,Inhibitor,FDA Technical Effects
+19,MISC,Miscellaneous,FDA Technical Effects
+20,NAT,Natural substances and extractives,FDA Technical Effects
+21,NNS,Non-nutritive sweetener,FDA Technical Effects
+22,NUTR,Nutrient,FDA Technical Effects
+23,NUTRS,Nutritive Sweetener,FDA Technical Effects
+24,PEST,Pesticide other than fumigant,FDA Technical Effects
+25,PRES,Chemical preservative,FDA Technical Effects
+26,SANI,Sanitizing agent for food processing equipment,FDA Technical Effects
+27,SDA,Solubilizing and dispersing agent,FDA Technical Effects
+28,SEQ,Sequestrant,FDA Technical Effects
+29,SOLV,Solvent,FDA Technical Effects
+30,SP,"Spices, other natural seasonings & flavorings",FDA Technical Effects
+31,SP/ADJ,Spray adjuvant,FDA Technical Effects
+32,STAB,Stabilizer,FDA Technical Effects
+33,SY/FL,Synthetic flavor,FDA Technical Effects
+34,VET,"Veterinary drug, which may leave residue in edible tissues of animals or in edible animal products",FDA Technical Effects

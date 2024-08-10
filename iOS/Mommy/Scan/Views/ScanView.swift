@@ -76,7 +76,7 @@ struct ScanView: View {
     var cameraView: some View {
         ZStack {
             CapturePreview(captureCameraViewModel: viewModel)
-                .frame(width: UIScreen.screenWidth, height: UIScreen.screenWidth)
+                .frame(width: UIScreen.screenWidth - 32, height: UIScreen.screenWidth - 32)
             VStack(spacing: 16.0) {
                 Spacer()
                 captureButton
@@ -148,8 +148,14 @@ struct ScanView: View {
             } label: {
                 ZStack {
                     Color(uiColor: .preimary)
+                    if screenType == .camera {
+                        RoundedRectangle(cornerRadius: 16.0)
+                            .foregroundColor(.init(uiColor: .secondary))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                    }
                     Text("Camera")
-                        .font(.system(size: 32, weight: .bold))
+                        .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.init(uiColor: .button))
                 }
             }
@@ -161,8 +167,14 @@ struct ScanView: View {
             } label: {
                 ZStack {
                     Color(uiColor: .preimary)
+                    if screenType == .text {
+                        RoundedRectangle(cornerRadius: 16.0)
+                            .foregroundColor(.init(uiColor: .secondary))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                    }
                     Text("Text")
-                        .font(.system(size: 32, weight: .bold))
+                        .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.init(uiColor: .button))
                 }
             }

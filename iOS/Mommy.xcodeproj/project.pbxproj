@@ -37,6 +37,7 @@
 		FF6EFC6C2C6813DB005F9B1B /* SpeechBubble.json in Resources */ = {isa = PBXBuildFile; fileRef = FF6EFC6B2C6813DB005F9B1B /* SpeechBubble.json */; };
 		FF6EFC702C6814C6005F9B1B /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EFC6F2C6814C6005F9B1B /* TextView.swift */; };
 		FF6EFC722C6814E8005F9B1B /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EFC712C6814E8005F9B1B /* SpeechRecognizer.swift */; };
+		FF6EFC742C681C96005F9B1B /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = FF6EFC732C681C96005F9B1B /* Loading.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		FF6EFC6B2C6813DB005F9B1B /* SpeechBubble.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SpeechBubble.json; sourceTree = "<group>"; };
 		FF6EFC6F2C6814C6005F9B1B /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		FF6EFC712C6814E8005F9B1B /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		FF6EFC732C681C96005F9B1B /* Loading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +125,6 @@
 		20CF73BF2C6762C600B3F470 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				FF6EFC6B2C6813DB005F9B1B /* SpeechBubble.json */,
 				20CF73BD2C6762C600B3F470 /* BabyLottie.json */,
 				20CF73BE2C6762C600B3F470 /* DropDownView.swift */,
 			);
@@ -221,6 +222,7 @@
 		FF46D17D2C6737BF007BEA21 /* Scan */ = {
 			isa = PBXGroup;
 			children = (
+				FF6EFC752C681CA0005F9B1B /* Components */,
 				FF46D17E2C6737D8007BEA21 /* Requests */,
 				FF46D1782C6732AD007BEA21 /* ViewModels */,
 				FF46D1682C66D40F007BEA21 /* Views */,
@@ -263,6 +265,15 @@
 				FF46D18D2C674C82007BEA21 /* HomeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FF6EFC752C681CA0005F9B1B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FF6EFC6B2C6813DB005F9B1B /* SpeechBubble.json */,
+				FF6EFC732C681C96005F9B1B /* Loading.json */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +346,7 @@
 				FF6EFC6C2C6813DB005F9B1B /* SpeechBubble.json in Resources */,
 				20CF73C42C6762C600B3F470 /* BabyLottie.json in Resources */,
 				FF46D15F2C66D119007BEA21 /* Assets.xcassets in Resources */,
+				FF6EFC742C681C96005F9B1B /* Loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

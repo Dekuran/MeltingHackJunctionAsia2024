@@ -1,4 +1,5 @@
 import SwiftUI
+import Lottie
 
 protocol ScanViewDelegate {
     func passImage(image: UIImage)
@@ -135,9 +136,8 @@ struct ScanView: View {
         ZStack {
             Color(uiColor: .preimary)
             
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                .foregroundColor(.white)
+            LottieView(animation: .named("Loading"))
+                .playing(loopMode: .loop)
         }
     }
     

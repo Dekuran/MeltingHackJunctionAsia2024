@@ -96,7 +96,36 @@ struct ScanView: View {
             Color(uiColor: .preimary)
             VStack {
                 Spacer()
-                TextView()
+                TextView(didSentText: { searchText in
+                    screenType = .requesting // 먼저 requesting 상태로 전환
+                    
+                    Task {
+                        do {
+                            let responseString = try await CheckFoodAPIRequest.postText(with: searchText)
+                            
+                            // JSON 문자열을 개별 라인으로 나누고 각 라인을 디코딩
+                            let responseLines = responseString.components(separatedBy: "\n")
+                            var risks: [IngredientRisk] = []
+                            
+                            for line in responseLines {
+                                if let data = line.data(using: .utf8), !data.isEmpty {
+                                    let risk = try JSONDecoder().decode(IngredientRisk.self, from: data)
+                                    risks.append(risk)
+                                }
+                            }
+                            
+                            ingredientRisks = risks
+                            
+                            if !ingredientRisks.isEmpty {
+                                screenType = .result
+                            } else {
+                                print("Received empty response. Remaining in requesting state.")
+                            }
+                        } catch {
+                            print("Error: \(error)")
+                        }
+                    }
+                })
                 toggleButton
             }
         }

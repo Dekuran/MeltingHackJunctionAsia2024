@@ -18,6 +18,8 @@ struct TextView: View {
     @State var inputText: String = ""
     @State private var animateBigCircle = false
     @State private var animateSmallCircle = false
+    
+    var didSentText: (String) -> Void
 
     var body: some View {
         ZStack {
@@ -74,7 +76,7 @@ struct TextView: View {
                     isEditing = false
                     isRecording = false
                     if !inputText.isEmpty {
-                        requestAISuggest()
+                        requestAISuggest(with: inputText)
                     }
                 } label: {
                     Image(systemName: "paperplane.fill")
@@ -151,7 +153,7 @@ struct TextView: View {
                     isEditing = false
                     isRecording = false
                     if !inputText.isEmpty {
-                        requestAISuggest()
+                        requestAISuggest(with: inputText)
                     }
                 } label: {
                     Image(systemName: "paperplane.fill")
@@ -173,28 +175,10 @@ struct TextView: View {
 }
 
 extension TextView {
-    func requestAISuggest() {
+    func requestAISuggest(with text: String) {
         withAnimation {
-//            chatHistories.append(.me(message: inputText))
-//            isSplash = false
-//            chatHistories.append(.loading)
             speechRecognizer.transcript = ""
         }
-
-//        Task {
-//            do {
-//                guard let url = URL(string: "https://east-meets-north.citroner.blog/cgi/query?question=\(inputText)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else { return }
-//                let urlRequest = URLRequest(url: url)
-//                let (data, _) = try await URLSession.shared.data(for: urlRequest)
-//                let aiMessage = try JSONDecoder().decode(AIMessage.self, from: data)
-//                if case .loading = chatHistories.last {
-//                    chatHistories.removeLast()
-//                }
-//                chatHistories.append(.ai(message: aiMessage))
-//                inputText = ""
-//            } catch {
-//                errorHandling(with: "Network Issue, Please try it later.")
-//            }
-//        }
+        didSentText(text)
     }
 }

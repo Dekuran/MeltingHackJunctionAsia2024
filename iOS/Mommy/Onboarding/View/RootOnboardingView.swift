@@ -9,8 +9,7 @@ import SwiftUI
 
 struct RootOnboardingView: View {
     @State private var currentPage: Int = 0
-    @State private var showEgg = false
-    @State private var showView = true
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
     
     var pages: [AnyView] {
         [
@@ -20,12 +19,18 @@ struct RootOnboardingView: View {
     }
     
     var body: some View {
-        if currentPage < pages.count {
-            pages[currentPage]
-        } else {
+        if hasSeenOnboarding {
             HomeView()
+        } else {
+            if currentPage < pages.count {
+                pages[currentPage]
+            } else {
+                HomeView()
+                    .onAppear {
+                        hasSeenOnboarding = true
+                    }
+            }
         }
-        
     }
 }
 

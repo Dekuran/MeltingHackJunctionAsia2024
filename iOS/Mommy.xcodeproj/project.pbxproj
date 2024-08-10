@@ -18,6 +18,8 @@
 		20CF73C82C6762C600B3F470 /* RootOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73C22C6762C600B3F470 /* RootOnboardingView.swift */; };
 		20CF73CC2C67639600B3F470 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 20CF73CB2C67639600B3F470 /* Lottie */; };
 		20CF73CF2C677DFD00B3F470 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73CE2C677DFD00B3F470 /* ViewExtension.swift */; };
+		20CF73D22C67C57B00B3F470 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CF73D12C67C57B00B3F470 /* HomeViewModel.swift */; };
+		20CF73D52C67C7DB00B3F470 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 20CF73D42C67C7DB00B3F470 /* OpenAISwift */; };
 		FF46D1592C66D117007BEA21 /* MommyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D1582C66D117007BEA21 /* MommyApp.swift */; };
 		FF46D15B2C66D117007BEA21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D15A2C66D117007BEA21 /* ContentView.swift */; };
 		FF46D15D2C66D117007BEA21 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46D15C2C66D117007BEA21 /* Item.swift */; };
@@ -46,6 +48,7 @@
 		20CF73C22C6762C600B3F470 /* RootOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootOnboardingView.swift; sourceTree = "<group>"; };
 		20CF73CD2C677D7A00B3F470 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		20CF73CE2C677DFD00B3F470 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		20CF73D12C67C57B00B3F470 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		FF46D1552C66D117007BEA21 /* Mommy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mommy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46D1582C66D117007BEA21 /* MommyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MommyApp.swift; sourceTree = "<group>"; };
 		FF46D15A2C66D117007BEA21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20CF73D52C67C7DB00B3F470 /* OpenAISwift in Frameworks */,
 				20CF73CC2C67639600B3F470 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +140,14 @@
 				20CF73C22C6762C600B3F470 /* RootOnboardingView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		20CF73D02C67C56D00B3F470 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				20CF73D12C67C57B00B3F470 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FF46D14C2C66D117007BEA21 = {
@@ -230,6 +242,7 @@
 		FF46D18B2C674C62007BEA21 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				20CF73D02C67C56D00B3F470 /* ViewModel */,
 				FF46D18C2C674C75007BEA21 /* Views */,
 			);
 			path = Home;
@@ -261,6 +274,7 @@
 			name = Mommy;
 			packageProductDependencies = (
 				20CF73CB2C67639600B3F470 /* Lottie */,
+				20CF73D42C67C7DB00B3F470 /* OpenAISwift */,
 			);
 			productName = Mommy;
 			productReference = FF46D1552C66D117007BEA21 /* Mommy.app */;
@@ -292,6 +306,7 @@
 			mainGroup = FF46D14C2C66D117007BEA21;
 			packageReferences = (
 				20CF73CA2C67639600B3F470 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				20CF73D32C67C7DB00B3F470 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = FF46D1562C66D117007BEA21 /* Products */;
 			projectDirPath = "";
@@ -321,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20CF73AC2C67351D00B3F470 /* IngredientResultView.swift in Sources */,
+				20CF73D22C67C57B00B3F470 /* HomeViewModel.swift in Sources */,
 				FF46D17C2C673740007BEA21 /* CheckFoodAPIRequest.swift in Sources */,
 				20CF73AB2C67351D00B3F470 /* IngredientModel.swift in Sources */,
 				20CF73CF2C677DFD00B3F470 /* ViewExtension.swift in Sources */,
@@ -564,6 +580,14 @@
 				minimumVersion = 4.5.0;
 			};
 		};
+		20CF73D32C67C7DB00B3F470 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -571,6 +595,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 20CF73CA2C67639600B3F470 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		20CF73D42C67C7DB00B3F470 /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20CF73D32C67C7DB00B3F470 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

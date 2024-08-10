@@ -33,5 +33,24 @@ INGREDIENT_IMAGE_PROCESSING_USER_PROMPT = """"
 
 RESPONSES_SAVE_LOCATION = "ingredient_image_responses.csv"
 
+FDA_INGREDIENT_LOOKUP_LOCATION = "fda_additives_reference.csv"
+
+
+INGREDIENT_TEXT_PROCESSING_SYSTEM_PROMPT = """
+        You are a helpful assistant that identifies the ingredients from questions from users
+         in multiple languages and returns a JSON output of the ingredients in STRICTLY the following format:
+
+         {
+            "ingredient": "ingredient name string",
+            "ingredientType": "ingredient type string",
+            "amount": float,
+            "unit": "unit string"
+        }
+         Guess ingredientType. Leave amount and unit blank.
+         
+         Only return VALID JSON with no explanation or comments.
+
+         """
+
 
 

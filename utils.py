@@ -48,3 +48,17 @@ def compare_new_ingredient_image_response_to_risk_lookup(response_df):
     ingredients_with_risks =  response_df.merge(simple_risks_df, how="left", on="ingredient").sort_values("riskScore", ascending = False)
     ingredients_with_risks_json = [ingredients_with_risks.to_json(orient='records', lines=True)]
     return ingredients_with_risks_json
+
+
+def identify_ingredients_from_text(input_text):
+    response = client.chat.completions.create(
+    model=MODEL,
+    messages=[
+        {"role": "system", "content": INGREDIENT_TEXT_PROCESSING_SYSTEM_PROMPT},
+        {"role": "user", "content": [
+            {"type": "text", "text": input_text},
+        ]}
+    ],
+    temperature=0.0,
+    )
+    return response.choices[0].message.content

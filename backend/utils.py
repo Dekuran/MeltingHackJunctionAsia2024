@@ -64,8 +64,8 @@ def process_new_ingredient_image_response(responseJSON):
 
 def add_selected_user_data_to_ingredients(response_df, selected_user_id):
     user_data_df = pd.read_csv(USER_DATA_LOCATION)
-    selected_user_df = user_data_df[user_data_df["userId"] == selected_user_id]
-    selected_user_df_for_join = selected_user_df[["userId", "userMode", "pregnancyOrPostBirthWeeks"]]
+    selected_user_df = user_data_df[user_data_df["userId"] == selected_user_id].copy()
+    selected_user_df_for_join = selected_user_df[["userId", "userMode", "pregnancyOrPostBirthWeeks"]].copy()
     selected_user_df_for_join.rename(columns={'userMode':'pregnancyStatus'}, inplace=True)
     latest_response_with_user_data = response_df.merge(selected_user_df_for_join, how="cross")
     return latest_response_with_user_data

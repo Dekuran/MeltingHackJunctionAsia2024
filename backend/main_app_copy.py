@@ -5,6 +5,7 @@ from openai import OpenAI
 from IPython.display import Image, display, Audio, Markdown
 import base64
 import re
+import json
 
 import constants
 import utils
@@ -17,7 +18,7 @@ html_template = '''
     <title>Display Text</title>
   </head>
   <body>
-        <h1>{{ outputJSON }}</h1>
+        <h1>{{ response }}</h1>
   </body>
 </html>
 '''
@@ -27,7 +28,7 @@ client = utils.get_openai_client()
 img_encoded = utils.encode_image("redbull_ingredients.png")
 
 app_state = {
-    'data': "Waiting"
+    'data': {"status": "Waiting"}
 }
 
 TEST_USER = "id_19"
@@ -72,23 +73,22 @@ def upload_image():
             text_file.write(app_state['data'])
         ##generate_response(app_state['data'])
     
-    if app_state['data'] == "Waiting":
-        response = "Waiting"
+    if app_state['data'] == {"status": "Waiting"}:
+        response = app_state['data']
 
     else:
-        response = generate_response(app_state['data'])
-    #response = app_state['data']
+        query_output = generate_response(app_state['data'])
+        # Join the list into a single string (in case it's stored as a list of one string)
+        data_string = query_output[0]
+        # Split the string by the newline character to get individual JSON strings
+        json_strings = data_string.strip().split('\n')
+        # Parse each JSON string into a dictionary
+        response = [json.loads(json_str) for json_str in json_strings]
 
-    return render_template_string(html_template, content = response)
+    print(response)
 
+    return response #render_template_string(html_template, content = response)
 
-'''
-@app.route('/uploads/<filename>')
-def send_uploaded_file(filename=''):
-    from flask import send_from_directory
-    return send_from_directory(app.config["IMAGE_UPLOADS"], filename)
-
-'''
 
 if __name__ == "__main__":
     app.run(

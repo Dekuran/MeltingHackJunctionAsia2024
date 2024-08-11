@@ -5,15 +5,16 @@
 //  Created by Kyubo Shim on 8/10/24.
 //
 
+
 import SwiftUI
 
 struct IngredientResultView: View {
-    @StateObject private var viewModel: IngredientRiskViewModel
+    @ObservedObject private var viewModel: IngredientRiskViewModel
     @ObservedObject private var captureCameraViewModel: CaptureCameraViewModel
     
-    // DI를 위한 초기화 함수. 기본적으로 더미 데이터를 사용.
-    init(viewModel: IngredientRiskViewModel = IngredientRiskViewModel(ingredientRisks: IngredientDummyData.ingredientRisks), captureCameraViewModel: CaptureCameraViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+    // DI를 위한 초기화 함수. 실제 데이터 기반으로 구성
+    init(viewModel: IngredientRiskViewModel, captureCameraViewModel: CaptureCameraViewModel) {
+        self.viewModel = viewModel
         self.captureCameraViewModel = captureCameraViewModel
     }
     
@@ -49,13 +50,13 @@ struct IngredientResultView: View {
             LazyVStack(pinnedViews: [.sectionHeaders]) {
                 Section(header: stickyHeader()) {
                     VStack(alignment: .leading, spacing: 16) {
-//                        Group {
-//                            riskSection(title: "Danger Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore < 0 }, titleColor: .red)
-//                            
-//                            riskSection(title: "Neutral Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore == 0 }, titleColor: .gray)
-//                            
-//                            riskSection(title: "Good Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore > 0 }, titleColor: .green)
-//                        }
+                        Group {
+                            riskSection(title: "Danger Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore ?? 0 < 0 }, titleColor: .red)
+                            
+                            riskSection(title: "Neutral Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore == 0 }, titleColor: .gray)
+                            
+                            riskSection(title: "Good Factors", risks: viewModel.ingredientRisks.filter { $0.riskScore ?? 0 > 0 }, titleColor: .green)
+                        }
                     }
                     .padding()
                 }
@@ -97,7 +98,6 @@ struct IngredientResultView: View {
     }
 }
 
-
 // 개별 성분에 대한 정보를 표시하는 하위 뷰
 struct IngredientRiskView: View {
     let risk: IngredientRisk
@@ -107,18 +107,30 @@ struct IngredientRiskView: View {
             HStack {
                 Text(risk.ingredient)
                     .font(.title2)
-                    .foregroundColor(Color(hex: risk.hexColor))
+                    
                 Spacer()
-                Text("\(risk.riskScore)")
-                    .font(.headline)
-                    .foregroundColor(.red)
+                if let riskScore = risk.riskScore {
+                    Text("\(riskScore, specifier: "%.1f")")
+                        .font(.headline)
+                        .foregroundColor(.red)
+                } else {
+                    Text("N/A")
+                        .font(.headline)
+                        .foregroundColor(.gray)
+                }
             }
             
-//            Text(risk.riskCategory)
-//                .font(.subheadline)
-//                .foregroundColor(.red)
+            if let riskCategory = risk.riskCategory {
+                Text(riskCategory)
+                    .font(.subheadline)
+                    .foregroundColor(.red)
+            } else {
+                Text("No Category")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
             
-            Text(risk.riskDescription)
+            Text(risk.riskDescription ?? "No description available")
                 .font(.body)
             
             Text("Pregnancy Status: \(risk.pregnancyStatus)")
@@ -138,20 +150,8 @@ struct IngredientRiskView: View {
     }
 }
 
-// Hex 코드를 기반으로 Color를 생성하는 확장 함수
-extension Color {
-    init(hex: String) {
-        let scanner = Scanner(string: hex)
-        scanner.currentIndex = hex.startIndex
-        var rgbValue: UInt64 = 0
-        scanner.scanHexInt64(&rgbValue)
-        let r = Double((rgbValue & 0xFF0000) >> 16) / 255.0
-        let g = Double((rgbValue & 0x00FF00) >> 8) / 255.0
-        let b = Double(rgbValue & 0x0000FF) / 255.0
-        self.init(red: r, green: g, blue: b)
-    }
-}
-
+// #Preview 설정은 기본적으로 Dummy 데이터를 통해 설정하고 있으므로, 변경이 필요 없습니다.
+// 실제 데이터는 .result에서 전달된 데이터가 표시됩니다.
 #Preview {
-    IngredientResultView(captureCameraViewModel: CaptureCameraViewModel())
+    IngredientResultView(viewModel: IngredientRiskViewModel(ingredientRisks: IngredientDummyData.ingredientRisks), captureCameraViewModel: CaptureCameraViewModel())
 }

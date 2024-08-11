@@ -92,7 +92,7 @@ def upload_image():
         else:
             response = app_state['data']
 
-    #print(response)
+    print(response)
 
     return response #render_template_string(html_template, content = response)
 

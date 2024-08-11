@@ -57,18 +57,22 @@ struct ScanView: View {
                             print("Successfully parsed \(ingredientRisks.count) risks.")
                         } catch {
                             print("Error decoding JSON: \(error)")
+                            screenType = .camera 
                         }
                     } else {
                         print("Error: Could not convert responseString to Data.")
+                        screenType = .camera
                     }
                     
                     if !ingredientRisks.isEmpty {
                         screenType = .result
                     } else {
                         print("Received empty response. Remaining in requesting state.")
+                        screenType = .camera
                     }
                 } catch {
                     print("Error: \(error)")
+                    screenType = .camera
                 }
             }
         }

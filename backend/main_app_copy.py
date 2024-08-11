@@ -44,6 +44,14 @@ def generate_response(image):
     outputJSON = utils.compare_new_ingredient_image_response_to_risk_lookup(imageIngredientsWithUserDataDf)
     return outputJSON
 
+def generate_text_response(text):
+    user = TEST_USER
+    imageIngredientsJson = utils.identify_ingredients_from_text(text, client)
+    imageIngredientsDf = utils.process_new_ingredient_image_response(imageIngredientsJson)
+    imageIngredientsWithUserDataDf = utils.add_selected_user_data_to_ingredients(imageIngredientsDf, user)
+    outputJSON = utils.compare_new_ingredient_image_response_to_risk_lookup(imageIngredientsWithUserDataDf)
+    return outputJSON
+
 
 # Open the image file and encode it as a base64 string
 IMAGE_PATH = os.path.join(app.config["IMAGE_UPLOADS"], "redbull_ingredients.png") # test image
@@ -51,20 +59,6 @@ IMAGE_PATH = os.path.join(app.config["IMAGE_UPLOADS"], "redbull_ingredients.png"
 # Route to upload image
 @app.route('/', methods=['GET', 'POST'])
 def upload_image():
-    '''
-    if request.method == "POST":
-        if request.files:
-            image = request.files["image"]
-            image_path = os.path.join(app.config["IMAGE_UPLOADS"], image.filename)
-            image.save(image_path)
-
-            # encode image
-            base64_image = utils.encode_image(image_path)
-            # gen response from OpenAI API
-            response = generate_response(base64_image)
-
-            return render_template("index.html", res=response)#, uploaded_image=image.filename
-    '''
     
     if request.method == "POST":
         app_state['data'] = request.form['data']
@@ -77,15 +71,28 @@ def upload_image():
         response = app_state['data']
 
     else:
-        query_output = generate_response(app_state['data'])
-        # Join the list into a single string (in case it's stored as a list of one string)
-        data_string = query_output[0]
-        # Split the string by the newline character to get individual JSON strings
-        json_strings = data_string.strip().split('\n')
-        # Parse each JSON string into a dictionary
-        response = [json.loads(json_str) for json_str in json_strings]
+        if "THIS_IS_AN_IMAGE_FILE" in app_state['data']:
+            app_state['data'] = re.sub('THIS_IS_AN_IMAGE_FILE', '', app_state['data'])
+            query_output = generate_response(app_state['data'])
+            # Join the list into a single string (in case it's stored as a list of one string)
+            data_string = query_output[0]
+            # Split the string by the newline character to get individual JSON strings
+            json_strings = data_string.strip().split('\n')
+            # Parse each JSON string into a dictionary
+            response = [json.loads(json_str) for json_str in json_strings]
+        elif "THIS_IS_A_TEXT_FILE" in app_state['data']:
+            app_state['data'] = re.sub('THIS_IS_A_TEXT_FILE', '', app_state['data'])
+            query_output = generate_text_response(app_state['data'])
+            # Join the list into a single string (in case it's stored as a list of one string)
+            data_string = query_output[0]
+            # Split the string by the newline character to get individual JSON strings
+            json_strings = data_string.strip().split('\n')
+            # Parse each JSON string into a dictionary
+            response = [json.loads(json_str) for json_str in json_strings]
+        else:
+            response = app_state['data']
 
-    print(response)
+    #print(response)
 
     return response #render_template_string(html_template, content = response)
 

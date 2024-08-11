@@ -108,21 +108,30 @@ struct ScanView: View {
                         do {
                             let responseString = try await CheckFoodAPIRequest.postText(with: searchText)
                             
-                            // JSON 데이터로 파싱하여 ingredientRisks 배열에 저장
+                            // responseDataString을 JSON 데이터로 변환
                             if let data = responseString.data(using: .utf8) {
-                                let risks = try JSONDecoder().decode([IngredientRisk].self, from: data)
-                                ingredientRisks = risks
+                                do {
+                                    let risks = try JSONDecoder().decode([IngredientRisk].self, from: data)
+                                    ingredientRisks = risks
+                                    print("Successfully parsed \(ingredientRisks.count) risks.")
+                                } catch {
+                                    print("Error decoding JSON: \(error)")
+                                    screenType = .text
+                                }
                             } else {
                                 print("Error: Could not convert responseString to Data.")
+                                screenType = .text
                             }
                             
                             if !ingredientRisks.isEmpty {
                                 screenType = .result
                             } else {
                                 print("Received empty response. Remaining in requesting state.")
+                                screenType = .text
                             }
                         } catch {
                             print("Error: \(error)")
+                            screenType = .text
                         }
                     }
                 })

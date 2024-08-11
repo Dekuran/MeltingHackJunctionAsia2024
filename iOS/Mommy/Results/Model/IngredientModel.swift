@@ -13,7 +13,7 @@ struct IngredientRisk: Codable, Identifiable {
     let product: String
     let ingredient: String
     let ingredientType: String
-    let amount: Double?
+//    let amount: String
     let unit: String
     let responseNo: Int
     let responseId: String

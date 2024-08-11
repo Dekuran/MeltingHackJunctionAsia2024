@@ -1,8 +1,9 @@
 MODEL="gpt-4o"
 OPENAI_API_KEY = "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"
 INGREDIENT_IMAGE_PROCESSING_SYSTEM_PROMPT = """
-        You are a helpful assistant that identifies the ingredients from images of food and drinks packaging labels. Labels may be in English or other languages like Korean
+        You are a helpful assistant that identifies the ingredients from images of food and drinks packaging labels. Labels may be in English or other languages like Korean.
         If text in the image is not English, first translate to English.
+        If there's no text, make a guess based on the type of food shown.
          Return a JSON output of the ingredients in STRICTLY the following format as an array of JSON objects:
 
          [

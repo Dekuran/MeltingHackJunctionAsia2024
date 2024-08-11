@@ -23,8 +23,7 @@ struct IngredientRisk: Codable, Identifiable {
     let pregnancyOrPostBirthWeeks: Int
     let riskScore: Double?
     let riskCategory: String?
-    let riskDescription: String
+    let riskDescription: String?
     let riskSortOrder: Int
-    let hexColor: String
 }
 

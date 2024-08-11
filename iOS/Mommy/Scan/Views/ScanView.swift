@@ -34,7 +34,7 @@ struct ScanView: View {
                     requestingView
                     
                 case .result:
-                    IngredientResultView(captureCameraViewModel: viewModel)
+                    IngredientResultView(viewModel: IngredientRiskViewModel(ingredientRisks: ingredientRisks), captureCameraViewModel: viewModel)
             }
             
             navigationBar
@@ -49,18 +49,18 @@ struct ScanView: View {
                 do {
                     let responseString = try await CheckFoodAPIRequest.postImage(with: pngData)
                     
-                    // JSON 문자열을 개별 라인으로 나누고 각 라인을 디코딩
-                    let responseLines = responseString.components(separatedBy: "\n")
-                    var risks: [IngredientRisk] = []
-                    
-                    for line in responseLines {
-                        if let data = line.data(using: .utf8), !data.isEmpty {
-                            let risk = try JSONDecoder().decode(IngredientRisk.self, from: data)
-                            risks.append(risk)
+                    // responseDataString을 JSON 데이터로 변환
+                    if let data = responseString.data(using: .utf8) {
+                        do {
+                            let risks = try JSONDecoder().decode([IngredientRisk].self, from: data)
+                            ingredientRisks = risks
+                            print("Successfully parsed \(ingredientRisks.count) risks.")
+                        } catch {
+                            print("Error decoding JSON: \(error)")
                         }
+                    } else {
+                        print("Error: Could not convert responseString to Data.")
                     }
-                    
-                    ingredientRisks = risks
                     
                     if !ingredientRisks.isEmpty {
                         screenType = .result
@@ -104,18 +104,13 @@ struct ScanView: View {
                         do {
                             let responseString = try await CheckFoodAPIRequest.postText(with: searchText)
                             
-                            // JSON 문자열을 개별 라인으로 나누고 각 라인을 디코딩
-                            let responseLines = responseString.components(separatedBy: "\n")
-                            var risks: [IngredientRisk] = []
-                            
-                            for line in responseLines {
-                                if let data = line.data(using: .utf8), !data.isEmpty {
-                                    let risk = try JSONDecoder().decode(IngredientRisk.self, from: data)
-                                    risks.append(risk)
-                                }
+                            // JSON 데이터로 파싱하여 ingredientRisks 배열에 저장
+                            if let data = responseString.data(using: .utf8) {
+                                let risks = try JSONDecoder().decode([IngredientRisk].self, from: data)
+                                ingredientRisks = risks
+                            } else {
+                                print("Error: Could not convert responseString to Data.")
                             }
-                            
-                            ingredientRisks = risks
                             
                             if !ingredientRisks.isEmpty {
                                 screenType = .result

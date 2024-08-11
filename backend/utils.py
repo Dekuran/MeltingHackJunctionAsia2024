@@ -71,15 +71,15 @@ def add_selected_user_data_to_ingredients(response_df, selected_user_id):
     return latest_response_with_user_data
 
 
-
-
 def compare_new_ingredient_image_response_to_risk_lookup(response_df):
     fda_risk_lookup = pd.read_csv(FDA_INGREDIENT_LOOKUP_LOCATION)
     fda_risk_lookup["ingredient"] =  fda_risk_lookup["additive"].str.lower()
-    display(response_df)
+    #display(response_df)
     response_df["ingredient"] = response_df["ingredient"].str.lower()
-    simple_risks_df = fda_risk_lookup[["ingredient","riskScore", "riskCategory"]] ## TODO skip this step by preprocessing to this smaller dataset
+    simple_risks_df = fda_risk_lookup[["ingredient","riskScore", "riskCategory", "fda_status"]].copy()
+    simple_risks_df.rename(columns={'fda_status':'riskDescription'}, inplace=True)
     ingredients_with_risks =  response_df.merge(simple_risks_df, how="left", on="ingredient").sort_values("riskScore", ascending = False)
+    ingredients_with_risks["riskSortOrder"] = range(len(ingredients_with_risks))
     ingredients_with_risks_json = [ingredients_with_risks.to_json(orient='records', lines=True)]
     return ingredients_with_risks_json
 
